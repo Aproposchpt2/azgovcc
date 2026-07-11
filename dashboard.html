@@ -98,7 +98,7 @@ html,body{font-family:var(--body);background:linear-gradient(160deg,#0c2257,#070
     <span class="mark">AZ</span>
     <span>
       <div class="bname">Arizona Government Contracts Center</div>
-      <div class="bsub">AzGovCC &middot; Apropos Group LLC</div>
+      <div class="bsub" id="bizSub">AzGovCC</div>
     </span>
   </div>
   <div class="nav-right">
@@ -428,6 +428,9 @@ function openCaProposal() {
 }
 
 document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeCaDrawer(); });
+
+var bizSub = document.getElementById('bizSub');
+if (bizSub && PROFILE.business_name) bizSub.textContent = PROFILE.business_name;
 
 renderTags();
 loadBids();
