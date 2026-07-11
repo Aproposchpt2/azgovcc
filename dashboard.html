@@ -328,10 +328,10 @@ function openCaDrawer(idx) {
     +'<div class="ca-agency">'+esc(bid.agency||'Arizona State Agency')+'</div>'
     +(bid.due_in_days!=null?'<span class="ca-urgency '+urgClass+'">'+esc(dueText(bid.due_in_days))+'</span>':'')
     +'<div class="ca-meta-grid">'
-    +'<div class="ca-meta-cell"><div class="ml">Solicitation #</div><div class="mv">'+esc(bid.solicitation_no||'&mdash;')+'</div></div>'
+    +'<div class="ca-meta-cell"><div class="ml">Solicitation #</div><div class="mv">'+esc(bid.solicitation_no||'—')+'</div></div>'
     +'<div class="ca-meta-cell"><div class="ml">Type</div><div class="mv">'+esc(bid.bid_type||'Solicitation')+'</div></div>'
-    +'<div class="ca-meta-cell"><div class="ml">Issue Date</div><div class="mv">'+esc(bid.issue_date||'&mdash;')+'</div></div>'
-    +'<div class="ca-meta-cell"><div class="ml">Close Date</div><div class="mv">'+esc(bid.close_date||'See bid docs')+'</div></div>'
+    +'<div class="ca-meta-cell"><div class="ml">Issue Date</div><div class="mv">'+esc(bid.issue_date ? new Date(bid.issue_date).toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'}) : '—')+'</div></div>'
+    +'<div class="ca-meta-cell"><div class="ml">Close Date</div><div class="mv">'+esc(bid.close_date ? new Date(bid.close_date).toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'}) : 'See bid docs')+'</div></div>'
     +'</div>'
     +'<div class="ca-actions">'
     +'<button class="ca-btn-primary" id="ca-analyze-btn" onclick="analyzeCaFit()">&#9733; Analyze Fit for '+esc(PROFILE.business_name||'Apropos Group LLC')+'</button>'
@@ -407,7 +407,7 @@ function analyzeCaFit() {
       +(a.risks&&a.risks.length?'<div style="font-size:.78rem;color:rgba(255,255,255,.6);margin-bottom:.4rem"><b style="color:var(--amber)">&#9888; Risks:</b> '+a.risks.map(function(r){return esc(r);}).join(' &middot; ')+'</div>':'')
       +(a.next_steps?'<div style="font-size:.8rem;color:rgba(255,255,255,.7);margin-top:.6rem;padding-top:.6rem;border-top:1px solid rgba(255,255,255,.1)"><b>Next step:</b> '+esc(a.next_steps)+'</div>':'')
       +'</div>');
-    btn.textContent = '&#10003; Analysis Complete â€” Refresh';
+    btn.textContent = '✓ Analysis Complete — Refresh';
   })
   .catch(function(e){
     btn.textContent = '&#9733; Analyze Fit for '+(PROFILE.business_name||'Apropos Group LLC');
