@@ -9,316 +9,283 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;1,6..96,400&family=Cormorant:ital,wght@1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-:root{--ink:#0F2A6A;--white:#fff;--line:rgba(255,255,255,.12);--line2:rgba(255,255,255,.22);--green:#6EE7A8;--cyan:#5bd3ff;--amber:#F5C36B;--gold:#C9A84C;--red:#F87171;--disp:'Bodoni Moda',Georgia,serif;--body:'Jost',sans-serif}
+:root{--ink:#0F2A6A;--white:#fff;--silver:#C3D0E8;--line:rgba(255,255,255,.12);--green:#6EE7A8;--cyan:#5bd3ff;--amber:#F5C36B;--gold:#C9A84C;--muted:#7890B8;--disp:'Bodoni Moda',Georgia,serif;--subdisp:'Cormorant',Georgia,serif;--body:'Jost',sans-serif}
 *{box-sizing:border-box;margin:0;padding:0}
-html,body{font-family:var(--body);background:linear-gradient(160deg,#0c2257,#070e1e 60%,#040914);min-height:100vh;color:rgba(255,255,255,.82)}
-.topbar{background:rgba(7,20,50,.95);border-bottom:1px solid var(--line);padding:.9rem 1.6rem;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;position:sticky;top:0;z-index:200}
-.brand{display:flex;align-items:center;gap:10px}
-.mark{width:36px;height:36px;border-radius:8px;background:#fff;color:var(--ink);font-weight:700;font-size:.8rem;display:grid;place-items:center;font-family:var(--body);flex-shrink:0}
-.bname{font-family:var(--disp);font-size:1.05rem;color:#fff;line-height:1}
-.bsub{font-size:.52rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.4)}
-.shell{max-width:1100px;margin:0 auto;padding:2rem 1.2rem 7rem}
-.page-head{text-align:center;margin-bottom:2.4rem}
-.page-eye{font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;color:var(--cyan);font-weight:600;margin-bottom:.6rem}
-.page-title{font-family:var(--disp);font-size:clamp(1.8rem,3.5vw,2.6rem);color:#fff;margin-bottom:.6rem}
-.page-sub{font-size:.9rem;color:rgba(255,255,255,.5);max-width:54ch;margin:0 auto}
-/* category grid */
-.cat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin-bottom:2rem}
-.cat-card{background:rgba(255,255,255,.05);border:1.5px solid var(--line);border-radius:12px;padding:1.1rem 1rem;cursor:pointer;transition:.18s;position:relative;user-select:none}
-.cat-card:hover{background:rgba(91,211,255,.07);border-color:rgba(91,211,255,.3)}
-.cat-card.selected{background:rgba(91,211,255,.1);border-color:var(--cyan);box-shadow:0 0 0 1px var(--cyan)}
-.cat-card.expanded{border-color:rgba(91,211,255,.5);background:rgba(91,211,255,.08)}
-.cat-icon{font-size:1.5rem;margin-bottom:.55rem}
-.cat-name{font-size:.88rem;font-weight:600;color:#fff;line-height:1.3;margin-bottom:.3rem}
-.cat-count{font-size:.65rem;color:rgba(255,255,255,.4);letter-spacing:.06em}
-.cat-check{position:absolute;top:.7rem;right:.7rem;width:20px;height:20px;border-radius:50%;border:1.5px solid rgba(255,255,255,.2);background:transparent;display:grid;place-items:center;font-size:.65rem;color:transparent;transition:.15s}
-.cat-card.selected .cat-check{background:var(--cyan);border-color:var(--cyan);color:var(--ink)}
-/* sub-service drawer */
-.sub-drawer{display:none;background:rgba(255,255,255,.03);border:1px solid rgba(91,211,255,.15);border-radius:10px;padding:1rem 1.1rem;margin-top:.6rem}
-.sub-drawer.open{display:block}
-.sub-label{font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;color:var(--cyan);font-weight:700;margin-bottom:.8rem}
-.sub-list{display:flex;flex-direction:column;gap:.5rem}
-.sub-item{display:flex;align-items:center;gap:.6rem;cursor:pointer;padding:.35rem .5rem;border-radius:6px;transition:.12s}
-.sub-item:hover{background:rgba(255,255,255,.05)}
-.sub-item input[type=checkbox]{width:15px;height:15px;accent-color:var(--cyan);cursor:pointer;flex-shrink:0}
-.sub-item label{font-size:.82rem;color:rgba(255,255,255,.75);cursor:pointer;line-height:1.3}
-/* sticky footer */
-.sticky-footer{position:fixed;bottom:0;left:0;right:0;background:rgba(7,20,50,.97);border-top:1px solid var(--line);padding:.9rem 1.6rem;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;z-index:300;backdrop-filter:blur(12px)}
-.sel-summary{font-size:.82rem;color:rgba(255,255,255,.6)}
-.sel-summary strong{color:var(--cyan)}
-.build-btn{font-family:var(--body);font-size:.75rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);background:rgba(91,211,255,.3);border:1.5px solid rgba(91,211,255,.4);border-radius:10px;padding:.75rem 1.6rem;cursor:not-allowed;transition:.2s;opacity:.5}
-.build-btn.active{background:var(--cyan);border-color:var(--cyan);opacity:1;cursor:pointer}
-.build-btn.active:hover{background:#7fe0ff;transform:translateY(-1px)}
-@media(max-width:600px){.cat-grid{grid-template-columns:repeat(2,1fr)}.sticky-footer{flex-direction:column;text-align:center}}
+html,body{font-family:var(--body);background:linear-gradient(160deg,#0a1a3e 0%,#060d22 60%,#030810 100%);min-height:100vh;color:rgba(255,255,255,.82);overflow-x:hidden}
+
+/* â”€â”€ INTAKE PAGE HEADER â”€â”€ */
+.intake-page-header{position:sticky;top:0;z-index:10;background:rgba(6,13,34,.92);backdrop-filter:blur(16px);border-bottom:1px solid rgba(191,214,255,.1);padding:1rem 1.6rem;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.intake-page-brand{display:flex;align-items:center;gap:10px}
+.intake-page-brand .mark{width:36px;height:36px;border-radius:9px;background:var(--white);color:var(--ink);font-weight:700;font-size:.78rem;display:grid;place-items:center;font-family:var(--body)}
+.intake-page-brand span{font-family:var(--disp);font-size:1.1rem;color:#fff}
+.intake-sel-bar{display:flex;align-items:center;gap:12px}
+.intake-sel-count{font-size:.78rem;color:var(--muted);font-weight:500}
+.intake-sel-count b{color:var(--green)}
+.intake-start-btn{font-family:var(--body);font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);background:var(--green);border:none;border-radius:9px;padding:.65rem 1.3rem;cursor:pointer;transition:.2s;opacity:.5;pointer-events:none}
+.intake-start-btn.ready{opacity:1;pointer-events:auto;animation:intakeGlow .6s ease forwards}
+.intake-start-btn.ready:hover{background:#8ef5c2;transform:translateY(-2px);box-shadow:0 0 28px rgba(110,231,168,.5)}
+@keyframes intakeGlow{0%{transform:scale(1)}40%{transform:scale(1.06);box-shadow:0 0 0 6px rgba(110,231,168,.25)}100%{transform:scale(1);box-shadow:0 0 18px rgba(110,231,168,.3)}}
+
+/* â”€â”€ BODY â”€â”€ */
+.intake-page-body{max-width:1100px;margin:0 auto;padding:2rem 1.4rem 6rem}
+.intake-hero{text-align:center;margin-bottom:2.4rem}
+.intake-hero .eyebrow{font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;color:var(--green);font-weight:700;margin-bottom:.7rem}
+.intake-hero h1{font-family:var(--disp);font-size:clamp(2rem,4vw,3rem);color:#fff;line-height:1.05;margin-bottom:.8rem}
+.intake-hero p{font-size:.95rem;color:rgba(255,255,255,.5);max-width:560px;margin:0 auto;line-height:1.7}
+
+/* â”€â”€ CATEGORY GRID â”€â”€ */
+.intake-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px}
+.intake-cat-card{background:rgba(255,255,255,.045);border:1px solid rgba(191,214,255,.12);border-radius:14px;padding:1.1rem 1.2rem;cursor:pointer;transition:.2s;position:relative;user-select:none}
+.intake-cat-card:hover{background:rgba(255,255,255,.08);border-color:rgba(123,220,255,.3);transform:translateY(-2px)}
+.intake-cat-card.has-sel{border-color:rgba(110,231,168,.4);background:rgba(110,231,168,.06)}
+.intake-cat-name{font-size:.9rem;font-weight:600;color:#fff;line-height:1.3;margin-bottom:.4rem}
+.intake-cat-meta{font-size:.68rem;color:var(--muted)}
+.intake-cat-badge{position:absolute;top:10px;right:10px;background:var(--green);color:var(--ink);font-size:.6rem;font-weight:800;border-radius:999px;padding:.18rem .55rem;min-width:20px;text-align:center}
+.intake-cat-arrow{position:absolute;bottom:10px;right:12px;font-size:.7rem;color:rgba(255,255,255,.25)}
+
+/* â”€â”€ DRAWER â”€â”€ */
+#catDrawer{position:fixed;top:0;right:0;height:100vh;width:min(480px,100vw);background:linear-gradient(180deg,#0c2060,#071435);border-left:1px solid rgba(191,214,255,.15);z-index:200;transform:translateX(100%);transition:transform .3s cubic-bezier(.22,1,.36,1);box-shadow:-20px 0 60px rgba(0,0,0,.6);display:flex;flex-direction:column}
+#catDrawer.open{transform:translateX(0)}
+#catDrawerOv{display:none;position:fixed;inset:0;background:rgba(2,8,22,.55);z-index:199;backdrop-filter:blur(3px)}
+#catDrawerOv.open{display:block}
+.drawer-head{padding:1.2rem 1.4rem;border-bottom:1px solid rgba(191,214,255,.1);display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
+.drawer-cat-eyebrow{font-size:.56rem;letter-spacing:.18em;text-transform:uppercase;color:var(--cyan);font-weight:700;margin-bottom:.3rem}
+.drawer-cat-name{font-family:var(--disp);font-size:1.35rem;color:#fff;line-height:1.1}
+.drawer-close{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:8px;color:#fff;padding:6px 12px;cursor:pointer;font-family:var(--body);font-size:.72rem;font-weight:700;transition:.15s}
+.drawer-close:hover{background:rgba(255,255,255,.12)}
+.drawer-select-all{padding:.7rem 1.4rem;border-bottom:1px solid rgba(191,214,255,.08);display:flex;align-items:center;gap:10px;flex-shrink:0}
+.drawer-select-all label{font-size:.78rem;color:rgba(255,255,255,.6);cursor:pointer;display:flex;align-items:center;gap:8px}
+.drawer-select-all input{accent-color:var(--green);width:14px;height:14px}
+.drawer-body{flex:1;overflow-y:auto;padding:.6rem 1.4rem 1.4rem;display:flex;flex-direction:column;gap:4px;scrollbar-width:thin;scrollbar-color:rgba(123,220,255,.15) transparent}
+.drawer-item{display:flex;align-items:flex-start;gap:11px;padding:.75rem .85rem;border-radius:10px;cursor:pointer;transition:.15s;border:1px solid transparent}
+.drawer-item:hover{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.07)}
+.drawer-item.selected{background:rgba(110,231,168,.07);border-color:rgba(110,231,168,.25)}
+.drawer-item input[type=checkbox]{accent-color:var(--green);width:15px;height:15px;flex-shrink:0;margin-top:2px}
+.drawer-item-name{font-size:.88rem;color:rgba(255,255,255,.78);line-height:1.4}
+.drawer-item.selected .drawer-item-name{color:var(--green)}
+.drawer-foot{padding:1rem 1.4rem;border-top:2px solid rgba(110,231,168,.25);flex-shrink:0;background:linear-gradient(180deg,rgba(12,32,80,.95),rgba(7,20,50,1));box-shadow:0 -8px 24px rgba(0,0,0,.4)}
+.drawer-done{width:100%;font-family:var(--body);font-size:.8rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);background:var(--green);border:none;border-radius:10px;padding:1rem;cursor:pointer;transition:.2s;box-shadow:0 4px 20px rgba(110,231,168,.3)}
+.drawer-done:hover{background:#8ef5c2;transform:translateY(-1px)}
+.intake-save-msg{font-size:.82rem;text-align:center;min-height:18px;margin-top:.5rem;padding:0 1.4rem}
+.intake-save-msg.ok{color:var(--green)}.intake-save-msg.err{color:#F87171}
+
+/* â”€â”€ LOADER â”€â”€ */
+#loader{display:none;position:fixed;inset:0;z-index:300;background:linear-gradient(160deg,#0a1a3e,#060d22);flex-direction:column;align-items:center;justify-content:center;gap:1.4rem}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+@media(max-width:600px){.intake-grid{grid-template-columns:1fr 1fr}}
 </style>
 </head>
 <body>
 
-<div class="topbar">
-  <div class="brand">
+<header class="intake-page-header">
+  <div class="intake-page-brand">
     <span class="mark">AZ</span>
-    <span>
-      <div class="bname">Arizona Government Contracts Center</div>
-      <div class="bsub">AzGovCC &middot; Select Your Services</div>
-    </span>
+    <span>Arizona Government Contracts Center</span>
+  </div>
+  <div class="intake-sel-bar">
+    <span class="intake-sel-count" id="intakeSelCount">No services selected yet</span>
+    <button class="intake-start-btn" id="intakeStartBtn" onclick="saveAndGo()">Build My Dashboard &rarr;</button>
+  </div>
+</header>
+
+<div class="intake-page-body">
+  <div class="intake-hero">
+    <div class="eyebrow">&#9670; One quick step</div>
+    <h1>What services does<br><em style="font-family:var(--subdisp);color:rgba(255,255,255,.55)">your business provide?</em></h1>
+    <p>Select your service categories â€” we match open Arizona government bids to exactly what your business delivers.</p>
+  </div>
+  <div class="intake-grid" id="intakeGrid"></div>
+</div>
+<div class="intake-save-msg" id="intakeSaveMsg"></div>
+
+<div id="catDrawerOv" onclick="closeDrawer()"></div>
+<div id="catDrawer">
+  <div class="drawer-head">
+    <div>
+      <div class="drawer-cat-eyebrow" id="drawerEyebrow">Service Category</div>
+      <div class="drawer-cat-name" id="drawerTitle">â€”</div>
+    </div>
+    <button class="drawer-close" onclick="closeDrawer()">&#x2715; Close</button>
+  </div>
+  <div class="drawer-select-all">
+    <label><input type="checkbox" id="drawerSelectAll" onchange="drawerToggleAll(this.checked)"> Select all in this category</label>
+  </div>
+  <div class="drawer-body" id="drawerBody"></div>
+  <div class="drawer-foot">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+      <button class="drawer-done" style="background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.18);color:#fff;box-shadow:none" onclick="closeDrawer()">&#8592; More Categories</button>
+      <button class="drawer-done" onclick="closeDrawerDone()">&#10003; Done</button>
+    </div>
   </div>
 </div>
 
-<div class="shell">
-  <div class="page-head">
-    <div class="page-eye">Step 1 of 1</div>
-    <h1 class="page-title">What does your business deliver?</h1>
-    <p class="page-sub">Select every service category that applies. We match your selections against every open Arizona government bid â€” state, county, city, and university.</p>
-  </div>
-
-  <div class="cat-grid" id="catGrid"></div>
-</div>
-
-<div class="sticky-footer">
-  <div class="sel-summary" id="selSummary">Select at least one service category to continue.</div>
-  <button class="build-btn" id="buildBtn" onclick="buildDashboard()">Build My Dashboard &rarr;</button>
+<div id="loader">
+  <svg width="52" height="52" viewBox="0 0 52 52" style="animation:spin 1s linear infinite"><circle cx="26" cy="26" r="22" fill="none" stroke="rgba(110,231,168,.2)" stroke-width="4"/><circle cx="26" cy="26" r="22" fill="none" stroke="#6EE7A8" stroke-width="4" stroke-linecap="round" stroke-dasharray="138" stroke-dashoffset="100" transform="rotate(-90 26 26)"/></svg>
+  <div style="font-family:'Bodoni Moda',serif;font-size:1.4rem;color:#fff;text-align:center">Building your dashboard</div>
+  <div style="font-size:.82rem;color:rgba(255,255,255,.45);text-align:center" id="loaderMsg">Matching bids to your service categoriesâ€¦</div>
 </div>
 
 <script>
 'use strict';
 var PROFILE_KEY = 'azgovcc_profile';
 var SESSION_KEY = 'azgovcc_session';
+var $ = function(id){ return document.getElementById(id); };
+var esc = function(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); };
 
-var SESSION = JSON.parse(localStorage.getItem(SESSION_KEY) || '{}');
 var PROFILE = JSON.parse(localStorage.getItem(PROFILE_KEY) || '{}');
+var SESSION = JSON.parse(localStorage.getItem(SESSION_KEY) || '{}');
 
-var CATEGORIES = [
-  { id:'tech', icon:'ðŸ’»', name:'Technology & IT', subs:[
-    {id:'it-services', label:'IT Services & Support', kws:['information technology','it services','managed services','helpdesk','tech support']},
-    {id:'cloud', label:'Cloud & Hosting', kws:['cloud','hosting','data center','infrastructure']},
-    {id:'cybersec', label:'Cybersecurity', kws:['cybersecurity','network security','cyber','security monitoring']},
-    {id:'network', label:'Networking & Telecom', kws:['network','telecommunications','telecom','wireless','fiber','broadband']},
-  ]},
-  { id:'software', icon:'âš™ï¸', name:'Software & Applications', subs:[
-    {id:'saas', label:'Software / SaaS Platforms', kws:['software','saas','application','platform','app','erp','crm']},
-    {id:'dev', label:'Software Development', kws:['software development','web development','application development','coding','programming','custom software']},
-    {id:'systems', label:'Systems Integration', kws:['systems integration','api integration','legacy system','data migration','erp implementation']},
-    {id:'db', label:'Database & Analytics', kws:['database','analytics','data warehouse','business intelligence','reporting']},
-  ]},
-  { id:'ai', icon:'ðŸ¤–', name:'AI & Automation', subs:[
-    {id:'ai-auto', label:'AI Automation', kws:['ai automation','ai agent','artificial intelligence','machine learning','workflow automation']},
-    {id:'crm-sys', label:'CRM & Lead Management', kws:['crm system','lead management','lead routing','customer relationship','intake system']},
-    {id:'biz-proc', label:'Business Process Automation', kws:['business process automation','bpa','rpa','digital transformation']},
-  ]},
-  { id:'consult', icon:'ðŸ“‹', name:'Professional Services', subs:[
-    {id:'mgmt', label:'Management Consulting', kws:['consulting','management consulting','advisory','strategic planning','business analysis']},
-    {id:'pm', label:'Project Management', kws:['project management','program management','pmp']},
-    {id:'training', label:'Training & Development', kws:['training','professional development','workforce development','e-learning','certification']},
-  ]},
-  { id:'finance', icon:'ðŸ’°', name:'Financial Services', subs:[
-    {id:'accounting', label:'Accounting & Audit', kws:['accounting','audit','cpa','financial','fiscal','budget']},
-    {id:'grants', label:'Grants Management', kws:['grants management','grant writing','bond','actuarial']},
-  ]},
-  { id:'legal', icon:'âš–ï¸', name:'Legal Services', subs:[
-    {id:'counsel', label:'Legal Counsel', kws:['legal','attorney','law','counsel','litigation']},
-    {id:'compliance', label:'Compliance & Regulatory', kws:['compliance','regulatory','contract review']},
-  ]},
-  { id:'marketing', icon:'ðŸ“£', name:'Marketing & Communications', subs:[
-    {id:'pr', label:'Public Relations & PR', kws:['public relations','marketing','communications','advertising','media','outreach']},
-    {id:'digital', label:'Digital Marketing', kws:['digital marketing','social media','branding','content marketing','seo']},
-    {id:'design', label:'Graphic Design & Creative', kws:['graphic design','design','creative','branding','artwork']},
-  ]},
-  { id:'arch', icon:'ðŸ›ï¸', name:'Architecture & Design', subs:[
-    {id:'arch-serv', label:'Architectural Services', kws:['architectural','architecture','architect','design services','space planning']},
-    {id:'interior', label:'Interior Design', kws:['interior design','interior','space planning']},
-  ]},
-  { id:'eng', icon:'ðŸ”§', name:'Engineering', subs:[
-    {id:'civil', label:'Civil Engineering', kws:['engineering','civil engineering','structural','gis','survey']},
-    {id:'mech', label:'Mechanical & Systems', kws:['mechanical engineering','systems integration','environmental engineering']},
-  ]},
-  { id:'construction', icon:'ðŸ—ï¸', name:'Construction', subs:[
-    {id:'general', label:'General Contractor', kws:['construction','general contractor','contractor','building','renovation','infrastructure']},
-    {id:'electrical', label:'Electrical', kws:['electrical','wiring','electrician','lighting','solar']},
-    {id:'plumbing', label:'Plumbing & Mechanical', kws:['plumbing','pipe','mechanical','hvac','heating','cooling']},
-    {id:'paving', label:'Paving & Concrete', kws:['paving','asphalt','concrete','road','parking','grading']},
-  ]},
-  { id:'facilities', icon:'ðŸ¢', name:'Facilities & Maintenance', subs:[
-    {id:'building-maint', label:'Building Maintenance', kws:['maintenance','facility maintenance','building maintenance','service contract']},
-    {id:'janitorial', label:'Janitorial & Custodial', kws:['janitorial','custodial','cleaning','housekeeping','sanitation']},
-    {id:'landscape', label:'Landscaping & Grounds', kws:['landscape','grounds','lawn','irrigation','turf','mowing']},
-  ]},
-  { id:'healthcare', icon:'ðŸ¥', name:'Healthcare', subs:[
-    {id:'medical', label:'Medical Services', kws:['healthcare','medical','health','clinical','patient','nursing']},
-    {id:'behavioral', label:'Behavioral Health', kws:['behavioral health','mental health','counseling','therapy']},
-    {id:'pharmacy', label:'Pharmacy', kws:['pharmacy','pharmaceutical','medication']},
-  ]},
-  { id:'env', icon:'ðŸŒ¿', name:'Environmental', subs:[
-    {id:'env-consult', label:'Environmental Consulting', kws:['environmental consulting','environmental','sustainability','air quality']},
-    {id:'waste', label:'Waste & Recycling', kws:['waste management','recycling','waste removal','disposal']},
-    {id:'remediation', label:'Remediation', kws:['remediation','hazardous','abatement','stormwater']},
-  ]},
-  { id:'security', icon:'ðŸ”’', name:'Security', subs:[
-    {id:'guard', label:'Security Guard Services', kws:['security','guard','patrol','monitoring']},
-    {id:'access', label:'Access Control & Surveillance', kws:['access control','surveillance','camera','alarm','fire alarm','fire protection']},
-  ]},
-  { id:'transport', icon:'ðŸš—', name:'Transportation', subs:[
-    {id:'fleet', label:'Fleet & Vehicles', kws:['transportation','fleet','vehicles','delivery','logistics']},
-    {id:'transit', label:'Transit & Shuttle', kws:['transit','shuttle','bus','paratransit']},
-  ]},
-  { id:'staffing', icon:'ðŸ‘¥', name:'Staffing & HR', subs:[
-    {id:'temp', label:'Temporary Staffing', kws:['staffing','temporary','temp agency','employment']},
-    {id:'hr', label:'HR & Recruiting', kws:['hr','human resources','recruiting','payroll','workforce']},
-  ]},
-  { id:'food', icon:'ðŸ½ï¸', name:'Food & Catering', subs:[
-    {id:'food-serv', label:'Food Service & Catering', kws:['food','catering','food service','cafeteria','dining','meal']},
-    {id:'vending', label:'Vending', kws:['vending','refreshments']},
-  ]},
-  { id:'printing', icon:'ðŸ–¨ï¸', name:'Printing & Media', subs:[
-    {id:'print', label:'Printing & Publications', kws:['printing','publishing','documents','publications']},
-    {id:'signage', label:'Signage & Graphics', kws:['signage','signs','banners','graphics']},
-  ]},
+var CTREE=[
+  {p:'P2028',n:'Audio and Visual',kids:[{c:'C40330',n:'Audio and Visual'},{c:'C40331',n:'Consumer Electronics'},{c:'C40332',n:'Photographic Equipment & Services'},{c:'C40333',n:'Presentation Equipment & Services'},{c:'C40334',n:'Sound and Stereo'},{c:'C40335',n:'Television, Video & Production'}]},
+  {p:'P2029',n:'Building Maintenance',kids:[{c:'C40337',n:'Cleaning and Janitorial'},{c:'C40338',n:'Janitorial Services'},{c:'C40340',n:'Demolition, Cleanup & Restoration'},{c:'C40341',n:'Doors, Glass and Windows'},{c:'C40343',n:'Electrical Systems & Lighting'},{c:'C40344',n:'Elevator and Lift'},{c:'C40346',n:'Excavating and Landscaping'},{c:'C40349',n:'Flooring'},{c:'C40350',n:'Grounds/Landscape Maintenance'},{c:'C40351',n:'HVAC'},{c:'C40353',n:'Interior Finishing Services (Painting, Drywall)'},{c:'C40357',n:'Paving, Concrete, Asphalt'},{c:'C40358',n:'Pest Control'},{c:'C40359',n:'Plumbing'},{c:'C40361',n:'Roofing'}]},
+  {p:'P2030',n:'Construction & Contracting',kids:[{c:'C40367',n:'Construction and Contracting'},{c:'C40368',n:'Horizontal Construction (Highways, Streets)'},{c:'C40369',n:'Vertical Construction (Buildings)'},{c:'C40370',n:'Engineering Construction (Bridges, Dams)'},{c:'C40371',n:'Asbestos Remediation'},{c:'C40375',n:'Electrical Contracting'},{c:'C40377',n:'Fencing Contracting'},{c:'C40378',n:'Fire Protection Contracting'},{c:'C40379',n:'HVAC Contracting'},{c:'C40380',n:'Landscape Contracting'},{c:'C40382',n:'Plumbing & Heating Contracting'},{c:'C40385',n:'Roofing Contracting'},{c:'C40386',n:'Solar Contracting'}]},
+  {p:'P2031',n:'Domestic',kids:[{c:'C40389',n:'Apparel, Uniforms & Footwear'},{c:'C40391',n:'Fabric, Garment and Textile'}]},
+  {p:'P2032',n:'Environmental',kids:[{c:'C40401',n:'Decontamination & Industrial Cleaning'},{c:'C40402',n:'Environmental Preservation & Restoration'},{c:'C40403',n:'Recycling'},{c:'C40404',n:'Waste Refuse Removal'},{c:'C40405',n:'Water & Wastewater Treatment'}]},
+  {p:'P2033',n:'Food and Beverage',kids:[{c:'C40412',n:'Food and Beverage Supply'},{c:'C40424',n:'Dairy Products'},{c:'C40426',n:'Food and Beverage Services (Catering)'}]},
+  {p:'P2034',n:'Furniture & Furnishings',kids:[{c:'C40427',n:'Furniture and Furnishings'},{c:'C40428',n:'Classroom & Educational Furniture'},{c:'C40429',n:'Office & Hospitality Furniture'},{c:'C40431',n:'Office, Commercial & Industrial Furniture'}]},
+  {p:'P2035',n:'Industrial & Manufacturing',kids:[{c:'C40435',n:'Chemicals and Reagents'},{c:'C40437',n:'Fuels, Lubricants & Additives'},{c:'C40439',n:'Laboratory, Measuring & Testing'},{c:'C40442',n:'Underground Utility & Waterworks'}]},
+  {p:'P2036',n:'Instructional & Education',kids:[{c:'C40444',n:'Education and Training'},{c:'C40449',n:'Classroom Equipment & Testing'},{c:'C40450',n:'Professional Development & Teaching Aids'},{c:'C40453',n:'Library, Books & Subscriptions'},{c:'C40456',n:'Vocational & Trade Education'}]},
+  {p:'P2037',n:'Medical & Health',kids:[{c:'C40457',n:'Medical and Health Services'},{c:'C40458',n:'Dental'},{c:'C40460',n:'Drugs and Pharmaceuticals'},{c:'C40461',n:'Emergency, Surgical & First Aid'},{c:'C40462',n:'Medical Equipment & Supplies'},{c:'C40464',n:'Clinic & Patient Care'},{c:'C40465',n:'Physical & Occupational Therapy'},{c:'C40466',n:'Healthcare Services'}]},
+  {p:'P2040',n:'Office & Business',kids:[{c:'C40471',n:'Warehousing, Packaging & Storage'},{c:'C40472',n:'Office Equipment & Supplies'},{c:'C40474',n:'Office Services & Administrative'},{c:'C40475',n:'Printing, Publishing & Signage'},{c:'C40476',n:'Promotional Items, Flags & Awards'}]},
+  {p:'P2041',n:'Professional & Consulting Services',kids:[{c:'C40479',n:'Architectural Services'},{c:'C40480',n:'Surveying & Mapping (GIS)'},{c:'C40481',n:'Communications, PR & Marketing'},{c:'C40482',n:'Training & Professional Development'},{c:'C40483',n:'Engineering & Research'},{c:'C40484',n:'Environmental Management'},{c:'C40485',n:'Finance, Auditing & Accounting'},{c:'C40486',n:'Government & Public Works'},{c:'C40487',n:'Graphic Design & Creative'},{c:'C40488',n:'Information Technology Services'},{c:'C40489',n:'Insurance & Risk Management'},{c:'C40490',n:'Staffing & Human Resources'},{c:'C40491',n:'Legal & Arbitration'},{c:'C40493',n:'Photography & Video Production'},{c:'C40495',n:'Real Estate & Property Management'},{c:'C40496',n:'Scientific, Research & Testing'}]},
+  {p:'P2042',n:'Power & Energy',kids:[{c:'C40500',n:'Batteries & Energy Storage'},{c:'C40503',n:'Mobile & Backup Generation'},{c:'C40506',n:'Solar Energy'},{c:'C40507',n:'Wind Energy'}]},
+  {p:'P2043',n:'Security, Public Order & Safety',kids:[{c:'C40509',n:'Emergency & Disaster Preparedness'},{c:'C40510',n:'Fire & Rescue Protection'},{c:'C40511',n:'Law Enforcement & Traffic Control'},{c:'C40512',n:'Personal Safety & PPE'},{c:'C40513',n:'Security Systems & Surveillance'}]},
+  {p:'P2044',n:'Sports & Recreation',kids:[{c:'C40516',n:'Physical Education & Fitness'},{c:'C40518',n:'Recreation & Playground Equipment'},{c:'C40519',n:'Sports & Athletic Equipment'}]},
+  {p:'P2045',n:'Technology',kids:[{c:'C40517',n:'Technology (General)'},{c:'C40521',n:'Cellular, Wireless & Telecom'},{c:'C40522',n:'Computer Networking & Internet Services'},{c:'C40523',n:'Computers, Hardware & Equipment'},{c:'C40524',n:'Document Management & Scanning'},{c:'C40525',n:'Software (Packaged, SaaS, Subscriptions)'},{c:'C40526',n:'Software & Web Development Services'},{c:'C40529',n:'Robotics, Sensors & Automation'}]},
+  {p:'P2046',n:'Transportation',kids:[{c:'C40530',n:'Transportation & Transit'},{c:'C40532',n:'Shipping, Freight & Logistics'},{c:'C40535',n:'Vehicle Parts & Fleet Maintenance'},{c:'C40536',n:'Buses & Shuttles'},{c:'C40538',n:'Fleet Vehicles (Cars, Trucks)'}]}
 ];
 
-// Load existing selections
-var savedKws = PROFILE.keywords || [];
-var selected = {}; // subId -> bool
+var intakeSelected = {};
+var _drawerCat = null;
 
-// Pre-check any subs whose keywords overlap with saved profile
-CATEGORIES.forEach(function(cat){
-  cat.subs.forEach(function(sub){
-    if (sub.kws.some(function(kw){ return savedKws.includes(kw.toLowerCase()); })) {
-      selected[sub.id] = true;
-    }
+// Pre-load existing selections from profile
+var existingCodes = PROFILE.commodity_codes || [];
+existingCodes.forEach(function(code){
+  CTREE.forEach(function(cat){
+    cat.kids.forEach(function(k){
+      if(k.c === code) intakeSelected[code] = {c:k.c, n:k.n, parent:cat.n};
+    });
   });
 });
 
-function buildGrid() {
-  var grid = document.getElementById('catGrid');
-  grid.innerHTML = '';
-  CATEGORIES.forEach(function(cat) {
-    var hasSelected = cat.subs.some(function(s){ return selected[s.id]; });
-    var card = document.createElement('div');
-    card.className = 'cat-card' + (hasSelected ? ' selected' : '');
-    card.id = 'cat-' + cat.id;
+function ctreeShortName(n){return n.replace(/:\s*(Equipment,?\s*)?(Machinery,?\s*)?(Supplies,?\s*)?(Technology,?\s*)?(and\s*)?Services?/gi,'').replace(/\(([^)]{0,30})\)/g,'$1').replace(/\s{2,}/g,' ').trim().split(',')[0].trim();}
 
-    var selectedCount = cat.subs.filter(function(s){ return selected[s.id]; }).length;
-    card.innerHTML =
-      '<div class="cat-check">&#10003;</div>'
-      + '<div class="cat-icon">' + cat.icon + '</div>'
-      + '<div class="cat-name">' + cat.name + '</div>'
-      + '<div class="cat-count">' + cat.subs.length + ' services' + (selectedCount ? ' &middot; <span style="color:var(--cyan)">' + selectedCount + ' selected</span>' : '') + '</div>'
-      + '<div class="sub-drawer" id="drawer-' + cat.id + '">'
-      +   '<div class="sub-label">Select services</div>'
-      +   '<div class="sub-list">'
-      +     cat.subs.map(function(sub){
-              return '<div class="sub-item" onclick="toggleSub(\'' + sub.id + '\',\'' + cat.id + '\')">'
-                + '<input type="checkbox" id="sub-' + sub.id + '"' + (selected[sub.id] ? ' checked' : '') + ' onclick="event.stopPropagation()">'
-                + '<label for="sub-' + sub.id + '">' + sub.label + '</label>'
-                + '</div>';
-            }).join('')
-      +   '</div>'
-      + '</div>';
-
-    card.querySelector('.cat-icon').parentElement.addEventListener('click', function(e) {
-      if (e.target.closest('.sub-drawer')) return;
-      toggleDrawer(cat.id);
-    });
-    card.addEventListener('click', function(e) {
-      if (e.target.closest('.sub-drawer')) return;
-      toggleDrawer(cat.id);
-    });
-
-    grid.appendChild(card);
-  });
-  updateFooter();
+function buildIntakeGrid(){
+  var grid = $('intakeGrid'); if(!grid) return;
+  grid.innerHTML = CTREE.map(function(cat){
+    var sel = cat.kids.filter(function(k){return intakeSelected[k.c];}).length;
+    return '<div class="intake-cat-card'+(sel?' has-sel':'')+'" id="icat-'+cat.p+'" onclick="openDrawer(\''+cat.p+'\')">'
+      +'<div class="intake-cat-name">'+esc(cat.n)+'</div>'
+      +'<div class="intake-cat-meta">'+cat.kids.length+' service types</div>'
+      +(sel?'<span class="intake-cat-badge">'+sel+'</span>':'')
+      +'<span class="intake-cat-arrow">&#8250;</span>'
+      +'</div>';
+  }).join('');
 }
 
-function toggleDrawer(catId) {
-  var drawer = document.getElementById('drawer-' + catId);
-  var card   = document.getElementById('cat-' + catId);
-  var isOpen = drawer.classList.contains('open');
-  // Close all others
-  document.querySelectorAll('.sub-drawer').forEach(function(d){ d.classList.remove('open'); });
-  document.querySelectorAll('.cat-card').forEach(function(c){ c.classList.remove('expanded'); });
-  if (!isOpen) {
-    drawer.classList.add('open');
-    card.classList.add('expanded');
+function updateIntakeSelCount(){
+  var total = Object.keys(intakeSelected).length;
+  var cats = CTREE.filter(function(c){return c.kids.some(function(k){return intakeSelected[k.c];});}).length;
+  var el = $('intakeSelCount');
+  if(el) el.innerHTML = total ? '<b>'+cats+'</b> categor'+(cats===1?'y':'ies')+' &middot; <b>'+total+'</b> service'+(total===1?'':'s')+' selected' : 'No services selected yet';
+  var btn = $('intakeStartBtn');
+  if(btn) btn.classList.toggle('ready', total > 0);
+}
+
+function openDrawer(parentCode){
+  _drawerCat = CTREE.find(function(c){return c.p===parentCode;});
+  if(!_drawerCat) return;
+  $('drawerEyebrow').textContent = 'Service Category';
+  $('drawerTitle').textContent = _drawerCat.n;
+  var allSel = _drawerCat.kids.every(function(k){return intakeSelected[k.c];});
+  $('drawerSelectAll').checked = allSel;
+  $('drawerBody').innerHTML = _drawerCat.kids.map(function(k){
+    var sel = !!intakeSelected[k.c];
+    var safeName = k.n.replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+    return '<label class="drawer-item'+(sel?' selected':'')+'" id="di-'+k.c+'" data-code="'+k.c+'" data-name="'+safeName+'">'
+      +'<input type="checkbox" '+(sel?'checked':'')+' onchange="drawerToggleItem(this)">'
+      +'<span class="drawer-item-name">'+esc(k.n)+'</span>'
+      +'</label>';
+  }).join('');
+  $('catDrawer').classList.add('open');
+  $('catDrawerOv').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeDrawer(){
+  $('catDrawer').classList.remove('open');
+  $('catDrawerOv').classList.remove('open');
+  document.body.style.overflow = '';
+  buildIntakeGrid();
+  updateIntakeSelCount();
+  _drawerCat = null;
+}
+
+function closeDrawerDone(){ closeDrawer(); }
+
+function drawerToggleItem(el){
+  var lbl = el.closest('label') || el.parentElement;
+  var code = lbl.dataset.code;
+  var name = lbl.dataset.name;
+  var checked = el.checked;
+  lbl.className = 'drawer-item' + (checked?' selected':'');
+  if(checked) intakeSelected[code] = {c:code, n:name, parent:_drawerCat?_drawerCat.n:''};
+  else delete intakeSelected[code];
+  if(_drawerCat){var allSel=_drawerCat.kids.every(function(k){return intakeSelected[k.c];});$('drawerSelectAll').checked=allSel;}
+  updateIntakeSelCount();
+}
+
+function drawerToggleAll(checked){
+  if(!_drawerCat) return;
+  _drawerCat.kids.forEach(function(k){
+    if(checked) intakeSelected[k.c] = {c:k.c, n:k.n, parent:_drawerCat.n};
+    else delete intakeSelected[k.c];
+    var item = document.getElementById('di-'+k.c);
+    if(item){item.className='drawer-item'+(checked?' selected':'');item.querySelector('input').checked=checked;}
+  });
+  updateIntakeSelCount();
+}
+
+document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeDrawer(); });
+
+function saveAndGo(){
+  var codes = Object.keys(intakeSelected);
+  if(!codes.length){
+    var msg = $('intakeSaveMsg');
+    if(msg){msg.className='intake-save-msg err';msg.textContent='Select at least one service category first.';}
+    return;
   }
-}
 
-function toggleSub(subId, catId) {
-  selected[subId] = !selected[subId];
-  var cb = document.getElementById('sub-' + subId);
-  if (cb) cb.checked = selected[subId];
-
-  // Update card selected state
-  var cat = CATEGORIES.find(function(c){ return c.id === catId; });
-  var card = document.getElementById('cat-' + catId);
-  var hasSelected = cat.subs.some(function(s){ return selected[s.id]; });
-  card.classList.toggle('selected', hasSelected);
-
-  // Update count badge in card
-  var selectedCount = cat.subs.filter(function(s){ return selected[s.id]; }).length;
-  card.querySelector('.cat-count').innerHTML = cat.subs.length + ' services'
-    + (selectedCount ? ' &middot; <span style="color:var(--cyan)">' + selectedCount + ' selected</span>' : '');
-
-  updateFooter();
-}
-
-function updateFooter() {
-  var totalSubs = Object.keys(selected).filter(function(k){ return selected[k]; }).length;
-  var totalCats = CATEGORIES.filter(function(cat){
-    return cat.subs.some(function(s){ return selected[s.id]; });
-  }).length;
-
-  var summary = document.getElementById('selSummary');
-  var btn = document.getElementById('buildBtn');
-
-  if (totalSubs === 0) {
-    summary.innerHTML = 'Select at least one service category to continue.';
-    btn.classList.remove('active');
-  } else {
-    summary.innerHTML = '<strong>' + totalSubs + ' service' + (totalSubs !== 1 ? 's' : '') + '</strong> selected across <strong>' + totalCats + ' categor' + (totalCats !== 1 ? 'ies' : 'y') + '</strong>';
-    btn.classList.add('active');
-  }
-}
-
-function buildDashboard() {
-  if (!document.getElementById('buildBtn').classList.contains('active')) return;
-
-  // Collect all keywords from selected subs
-  var kws = [];
-  CATEGORIES.forEach(function(cat){
-    cat.subs.forEach(function(sub){
-      if (selected[sub.id]) {
-        sub.kws.forEach(function(kw){ if (!kws.includes(kw)) kws.push(kw); });
-      }
-    });
-  });
-
-  // Collect selected sub labels as readable services
-  var serviceLabels = [];
-  CATEGORIES.forEach(function(cat){
-    cat.subs.forEach(function(sub){
-      if (selected[sub.id]) serviceLabels.push(sub.label);
-    });
-  });
+  var names = Object.values(intakeSelected).map(function(s){ return ctreeShortName(s.n).toLowerCase(); });
 
   // Save to profile
-  var profile = PROFILE;
-  profile.keywords = kws;
-  profile.services = serviceLabels;
-  profile.commodity_codes = [];
-  profile.state = 'CA';
-  if (!profile.business_name && SESSION.business_name) profile.business_name = SESSION.business_name;
-  localStorage.setItem(PROFILE_KEY, JSON.stringify(profile));
+  PROFILE.keywords = names;
+  PROFILE.commodity_codes = codes;
+  PROFILE.state = 'CA';
+  localStorage.setItem(PROFILE_KEY, JSON.stringify(PROFILE));
 
-  // Update session keywords
-  if (SESSION.token) {
-    SESSION.keywords = kws;
+  // Update session
+  if(SESSION.token){
+    SESSION.keywords = names;
     localStorage.setItem(SESSION_KEY, JSON.stringify(SESSION));
   }
 
-  location.href = '/dashboard.html';
+  // Show loader with messages
+  var loader = $('loader');
+  loader.style.display = 'flex';
+  var msgs = ['Matching bids to your service categoriesâ€¦','Scoring opportunities against your profileâ€¦','Ranking your best matchesâ€¦'];
+  var mi = 0;
+  var ticker = setInterval(function(){ mi++; if($('loaderMsg')&&msgs[mi]) $('loaderMsg').textContent=msgs[mi]; }, 700);
+  setTimeout(function(){
+    clearInterval(ticker);
+    location.href = '/dashboard.html';
+  }, 2100);
 }
 
 // Init
-buildGrid();
+buildIntakeGrid();
+updateIntakeSelCount();
 </script>
 </body>
 </html>
