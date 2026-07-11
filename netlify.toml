@@ -1,4 +1,4 @@
-[build]
+﻿[build]
   publish = "."
   functions = "netlify/functions"
 
@@ -34,3 +34,9 @@
   from = "/proposal"
   to   = "/proposal.html"
   status = 200
+
+[[redirects]]
+  from = "/services"
+  to   = "/services.html"
+  status = 200
+

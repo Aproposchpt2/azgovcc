@@ -63,7 +63,7 @@ textarea{min-height:80px;resize:vertical;line-height:1.6}
   <textarea id="keywords" placeholder="e.g. IT services, software development, consulting, construction, landscapingâ€¦"></textarea>
   <p class="hint">Enter services, trades, or product types â€” comma separated. We match these against every open Arizona bid.</p>
 
-  <button class="btn" id="startBtn">Build My Dashboard &rarr;</button>
+  <button class="btn" id="startBtn">Select My Services &rarr;</button>
   <div class="msg" id="msg"></div>
 
   <p class="login-link">Already a member? <a href="/login.html">Sign in</a></p>
@@ -97,7 +97,7 @@ document.getElementById('startBtn').addEventListener('click', function() {
   localStorage.setItem('AzGovCC_session', JSON.stringify(session));
 
   // Go to dashboard
-  location.href = '/dashboard.html';
+  location.href = '/services.html';
 });
 
 document.getElementById('keywords').addEventListener('keydown', function(e) {
@@ -106,4 +106,5 @@ document.getElementById('keywords').addEventListener('keydown', function(e) {
 </script>
 </body>
 </html>
+
 

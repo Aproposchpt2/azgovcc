@@ -1,0 +1,325 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>AzGovCC â€” Select Your Services</title>
+<meta name="robots" content="noindex"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;1,6..96,400&family=Cormorant:ital,wght@1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0F2A6A;--white:#fff;--line:rgba(255,255,255,.12);--line2:rgba(255,255,255,.22);--green:#6EE7A8;--cyan:#5bd3ff;--amber:#F5C36B;--gold:#C9A84C;--red:#F87171;--disp:'Bodoni Moda',Georgia,serif;--body:'Jost',sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{font-family:var(--body);background:linear-gradient(160deg,#0c2257,#070e1e 60%,#040914);min-height:100vh;color:rgba(255,255,255,.82)}
+.topbar{background:rgba(7,20,50,.95);border-bottom:1px solid var(--line);padding:.9rem 1.6rem;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;position:sticky;top:0;z-index:200}
+.brand{display:flex;align-items:center;gap:10px}
+.mark{width:36px;height:36px;border-radius:8px;background:#fff;color:var(--ink);font-weight:700;font-size:.8rem;display:grid;place-items:center;font-family:var(--body);flex-shrink:0}
+.bname{font-family:var(--disp);font-size:1.05rem;color:#fff;line-height:1}
+.bsub{font-size:.52rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.4)}
+.shell{max-width:1100px;margin:0 auto;padding:2rem 1.2rem 7rem}
+.page-head{text-align:center;margin-bottom:2.4rem}
+.page-eye{font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;color:var(--cyan);font-weight:600;margin-bottom:.6rem}
+.page-title{font-family:var(--disp);font-size:clamp(1.8rem,3.5vw,2.6rem);color:#fff;margin-bottom:.6rem}
+.page-sub{font-size:.9rem;color:rgba(255,255,255,.5);max-width:54ch;margin:0 auto}
+/* category grid */
+.cat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin-bottom:2rem}
+.cat-card{background:rgba(255,255,255,.05);border:1.5px solid var(--line);border-radius:12px;padding:1.1rem 1rem;cursor:pointer;transition:.18s;position:relative;user-select:none}
+.cat-card:hover{background:rgba(91,211,255,.07);border-color:rgba(91,211,255,.3)}
+.cat-card.selected{background:rgba(91,211,255,.1);border-color:var(--cyan);box-shadow:0 0 0 1px var(--cyan)}
+.cat-card.expanded{border-color:rgba(91,211,255,.5);background:rgba(91,211,255,.08)}
+.cat-icon{font-size:1.5rem;margin-bottom:.55rem}
+.cat-name{font-size:.88rem;font-weight:600;color:#fff;line-height:1.3;margin-bottom:.3rem}
+.cat-count{font-size:.65rem;color:rgba(255,255,255,.4);letter-spacing:.06em}
+.cat-check{position:absolute;top:.7rem;right:.7rem;width:20px;height:20px;border-radius:50%;border:1.5px solid rgba(255,255,255,.2);background:transparent;display:grid;place-items:center;font-size:.65rem;color:transparent;transition:.15s}
+.cat-card.selected .cat-check{background:var(--cyan);border-color:var(--cyan);color:var(--ink)}
+/* sub-service drawer */
+.sub-drawer{display:none;background:rgba(255,255,255,.03);border:1px solid rgba(91,211,255,.15);border-radius:10px;padding:1rem 1.1rem;margin-top:.6rem}
+.sub-drawer.open{display:block}
+.sub-label{font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;color:var(--cyan);font-weight:700;margin-bottom:.8rem}
+.sub-list{display:flex;flex-direction:column;gap:.5rem}
+.sub-item{display:flex;align-items:center;gap:.6rem;cursor:pointer;padding:.35rem .5rem;border-radius:6px;transition:.12s}
+.sub-item:hover{background:rgba(255,255,255,.05)}
+.sub-item input[type=checkbox]{width:15px;height:15px;accent-color:var(--cyan);cursor:pointer;flex-shrink:0}
+.sub-item label{font-size:.82rem;color:rgba(255,255,255,.75);cursor:pointer;line-height:1.3}
+/* sticky footer */
+.sticky-footer{position:fixed;bottom:0;left:0;right:0;background:rgba(7,20,50,.97);border-top:1px solid var(--line);padding:.9rem 1.6rem;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;z-index:300;backdrop-filter:blur(12px)}
+.sel-summary{font-size:.82rem;color:rgba(255,255,255,.6)}
+.sel-summary strong{color:var(--cyan)}
+.build-btn{font-family:var(--body);font-size:.75rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);background:rgba(91,211,255,.3);border:1.5px solid rgba(91,211,255,.4);border-radius:10px;padding:.75rem 1.6rem;cursor:not-allowed;transition:.2s;opacity:.5}
+.build-btn.active{background:var(--cyan);border-color:var(--cyan);opacity:1;cursor:pointer}
+.build-btn.active:hover{background:#7fe0ff;transform:translateY(-1px)}
+@media(max-width:600px){.cat-grid{grid-template-columns:repeat(2,1fr)}.sticky-footer{flex-direction:column;text-align:center}}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="brand">
+    <span class="mark">AZ</span>
+    <span>
+      <div class="bname">Arizona Government Contracts Center</div>
+      <div class="bsub">AzGovCC &middot; Select Your Services</div>
+    </span>
+  </div>
+</div>
+
+<div class="shell">
+  <div class="page-head">
+    <div class="page-eye">Step 1 of 1</div>
+    <h1 class="page-title">What does your business deliver?</h1>
+    <p class="page-sub">Select every service category that applies. We match your selections against every open Arizona government bid â€” state, county, city, and university.</p>
+  </div>
+
+  <div class="cat-grid" id="catGrid"></div>
+</div>
+
+<div class="sticky-footer">
+  <div class="sel-summary" id="selSummary">Select at least one service category to continue.</div>
+  <button class="build-btn" id="buildBtn" onclick="buildDashboard()">Build My Dashboard &rarr;</button>
+</div>
+
+<script>
+'use strict';
+var PROFILE_KEY = 'azgovcc_profile';
+var SESSION_KEY = 'azgovcc_session';
+
+var SESSION = JSON.parse(localStorage.getItem(SESSION_KEY) || '{}');
+var PROFILE = JSON.parse(localStorage.getItem(PROFILE_KEY) || '{}');
+
+var CATEGORIES = [
+  { id:'tech', icon:'ðŸ’»', name:'Technology & IT', subs:[
+    {id:'it-services', label:'IT Services & Support', kws:['information technology','it services','managed services','helpdesk','tech support']},
+    {id:'cloud', label:'Cloud & Hosting', kws:['cloud','hosting','data center','infrastructure']},
+    {id:'cybersec', label:'Cybersecurity', kws:['cybersecurity','network security','cyber','security monitoring']},
+    {id:'network', label:'Networking & Telecom', kws:['network','telecommunications','telecom','wireless','fiber','broadband']},
+  ]},
+  { id:'software', icon:'âš™ï¸', name:'Software & Applications', subs:[
+    {id:'saas', label:'Software / SaaS Platforms', kws:['software','saas','application','platform','app','erp','crm']},
+    {id:'dev', label:'Software Development', kws:['software development','web development','application development','coding','programming','custom software']},
+    {id:'systems', label:'Systems Integration', kws:['systems integration','api integration','legacy system','data migration','erp implementation']},
+    {id:'db', label:'Database & Analytics', kws:['database','analytics','data warehouse','business intelligence','reporting']},
+  ]},
+  { id:'ai', icon:'ðŸ¤–', name:'AI & Automation', subs:[
+    {id:'ai-auto', label:'AI Automation', kws:['ai automation','ai agent','artificial intelligence','machine learning','workflow automation']},
+    {id:'crm-sys', label:'CRM & Lead Management', kws:['crm system','lead management','lead routing','customer relationship','intake system']},
+    {id:'biz-proc', label:'Business Process Automation', kws:['business process automation','bpa','rpa','digital transformation']},
+  ]},
+  { id:'consult', icon:'ðŸ“‹', name:'Professional Services', subs:[
+    {id:'mgmt', label:'Management Consulting', kws:['consulting','management consulting','advisory','strategic planning','business analysis']},
+    {id:'pm', label:'Project Management', kws:['project management','program management','pmp']},
+    {id:'training', label:'Training & Development', kws:['training','professional development','workforce development','e-learning','certification']},
+  ]},
+  { id:'finance', icon:'ðŸ’°', name:'Financial Services', subs:[
+    {id:'accounting', label:'Accounting & Audit', kws:['accounting','audit','cpa','financial','fiscal','budget']},
+    {id:'grants', label:'Grants Management', kws:['grants management','grant writing','bond','actuarial']},
+  ]},
+  { id:'legal', icon:'âš–ï¸', name:'Legal Services', subs:[
+    {id:'counsel', label:'Legal Counsel', kws:['legal','attorney','law','counsel','litigation']},
+    {id:'compliance', label:'Compliance & Regulatory', kws:['compliance','regulatory','contract review']},
+  ]},
+  { id:'marketing', icon:'ðŸ“£', name:'Marketing & Communications', subs:[
+    {id:'pr', label:'Public Relations & PR', kws:['public relations','marketing','communications','advertising','media','outreach']},
+    {id:'digital', label:'Digital Marketing', kws:['digital marketing','social media','branding','content marketing','seo']},
+    {id:'design', label:'Graphic Design & Creative', kws:['graphic design','design','creative','branding','artwork']},
+  ]},
+  { id:'arch', icon:'ðŸ›ï¸', name:'Architecture & Design', subs:[
+    {id:'arch-serv', label:'Architectural Services', kws:['architectural','architecture','architect','design services','space planning']},
+    {id:'interior', label:'Interior Design', kws:['interior design','interior','space planning']},
+  ]},
+  { id:'eng', icon:'ðŸ”§', name:'Engineering', subs:[
+    {id:'civil', label:'Civil Engineering', kws:['engineering','civil engineering','structural','gis','survey']},
+    {id:'mech', label:'Mechanical & Systems', kws:['mechanical engineering','systems integration','environmental engineering']},
+  ]},
+  { id:'construction', icon:'ðŸ—ï¸', name:'Construction', subs:[
+    {id:'general', label:'General Contractor', kws:['construction','general contractor','contractor','building','renovation','infrastructure']},
+    {id:'electrical', label:'Electrical', kws:['electrical','wiring','electrician','lighting','solar']},
+    {id:'plumbing', label:'Plumbing & Mechanical', kws:['plumbing','pipe','mechanical','hvac','heating','cooling']},
+    {id:'paving', label:'Paving & Concrete', kws:['paving','asphalt','concrete','road','parking','grading']},
+  ]},
+  { id:'facilities', icon:'ðŸ¢', name:'Facilities & Maintenance', subs:[
+    {id:'building-maint', label:'Building Maintenance', kws:['maintenance','facility maintenance','building maintenance','service contract']},
+    {id:'janitorial', label:'Janitorial & Custodial', kws:['janitorial','custodial','cleaning','housekeeping','sanitation']},
+    {id:'landscape', label:'Landscaping & Grounds', kws:['landscape','grounds','lawn','irrigation','turf','mowing']},
+  ]},
+  { id:'healthcare', icon:'ðŸ¥', name:'Healthcare', subs:[
+    {id:'medical', label:'Medical Services', kws:['healthcare','medical','health','clinical','patient','nursing']},
+    {id:'behavioral', label:'Behavioral Health', kws:['behavioral health','mental health','counseling','therapy']},
+    {id:'pharmacy', label:'Pharmacy', kws:['pharmacy','pharmaceutical','medication']},
+  ]},
+  { id:'env', icon:'ðŸŒ¿', name:'Environmental', subs:[
+    {id:'env-consult', label:'Environmental Consulting', kws:['environmental consulting','environmental','sustainability','air quality']},
+    {id:'waste', label:'Waste & Recycling', kws:['waste management','recycling','waste removal','disposal']},
+    {id:'remediation', label:'Remediation', kws:['remediation','hazardous','abatement','stormwater']},
+  ]},
+  { id:'security', icon:'ðŸ”’', name:'Security', subs:[
+    {id:'guard', label:'Security Guard Services', kws:['security','guard','patrol','monitoring']},
+    {id:'access', label:'Access Control & Surveillance', kws:['access control','surveillance','camera','alarm','fire alarm','fire protection']},
+  ]},
+  { id:'transport', icon:'ðŸš—', name:'Transportation', subs:[
+    {id:'fleet', label:'Fleet & Vehicles', kws:['transportation','fleet','vehicles','delivery','logistics']},
+    {id:'transit', label:'Transit & Shuttle', kws:['transit','shuttle','bus','paratransit']},
+  ]},
+  { id:'staffing', icon:'ðŸ‘¥', name:'Staffing & HR', subs:[
+    {id:'temp', label:'Temporary Staffing', kws:['staffing','temporary','temp agency','employment']},
+    {id:'hr', label:'HR & Recruiting', kws:['hr','human resources','recruiting','payroll','workforce']},
+  ]},
+  { id:'food', icon:'ðŸ½ï¸', name:'Food & Catering', subs:[
+    {id:'food-serv', label:'Food Service & Catering', kws:['food','catering','food service','cafeteria','dining','meal']},
+    {id:'vending', label:'Vending', kws:['vending','refreshments']},
+  ]},
+  { id:'printing', icon:'ðŸ–¨ï¸', name:'Printing & Media', subs:[
+    {id:'print', label:'Printing & Publications', kws:['printing','publishing','documents','publications']},
+    {id:'signage', label:'Signage & Graphics', kws:['signage','signs','banners','graphics']},
+  ]},
+];
+
+// Load existing selections
+var savedKws = PROFILE.keywords || [];
+var selected = {}; // subId -> bool
+
+// Pre-check any subs whose keywords overlap with saved profile
+CATEGORIES.forEach(function(cat){
+  cat.subs.forEach(function(sub){
+    if (sub.kws.some(function(kw){ return savedKws.includes(kw.toLowerCase()); })) {
+      selected[sub.id] = true;
+    }
+  });
+});
+
+function buildGrid() {
+  var grid = document.getElementById('catGrid');
+  grid.innerHTML = '';
+  CATEGORIES.forEach(function(cat) {
+    var hasSelected = cat.subs.some(function(s){ return selected[s.id]; });
+    var card = document.createElement('div');
+    card.className = 'cat-card' + (hasSelected ? ' selected' : '');
+    card.id = 'cat-' + cat.id;
+
+    var selectedCount = cat.subs.filter(function(s){ return selected[s.id]; }).length;
+    card.innerHTML =
+      '<div class="cat-check">&#10003;</div>'
+      + '<div class="cat-icon">' + cat.icon + '</div>'
+      + '<div class="cat-name">' + cat.name + '</div>'
+      + '<div class="cat-count">' + cat.subs.length + ' services' + (selectedCount ? ' &middot; <span style="color:var(--cyan)">' + selectedCount + ' selected</span>' : '') + '</div>'
+      + '<div class="sub-drawer" id="drawer-' + cat.id + '">'
+      +   '<div class="sub-label">Select services</div>'
+      +   '<div class="sub-list">'
+      +     cat.subs.map(function(sub){
+              return '<div class="sub-item" onclick="toggleSub(\'' + sub.id + '\',\'' + cat.id + '\')">'
+                + '<input type="checkbox" id="sub-' + sub.id + '"' + (selected[sub.id] ? ' checked' : '') + ' onclick="event.stopPropagation()">'
+                + '<label for="sub-' + sub.id + '">' + sub.label + '</label>'
+                + '</div>';
+            }).join('')
+      +   '</div>'
+      + '</div>';
+
+    card.querySelector('.cat-icon').parentElement.addEventListener('click', function(e) {
+      if (e.target.closest('.sub-drawer')) return;
+      toggleDrawer(cat.id);
+    });
+    card.addEventListener('click', function(e) {
+      if (e.target.closest('.sub-drawer')) return;
+      toggleDrawer(cat.id);
+    });
+
+    grid.appendChild(card);
+  });
+  updateFooter();
+}
+
+function toggleDrawer(catId) {
+  var drawer = document.getElementById('drawer-' + catId);
+  var card   = document.getElementById('cat-' + catId);
+  var isOpen = drawer.classList.contains('open');
+  // Close all others
+  document.querySelectorAll('.sub-drawer').forEach(function(d){ d.classList.remove('open'); });
+  document.querySelectorAll('.cat-card').forEach(function(c){ c.classList.remove('expanded'); });
+  if (!isOpen) {
+    drawer.classList.add('open');
+    card.classList.add('expanded');
+  }
+}
+
+function toggleSub(subId, catId) {
+  selected[subId] = !selected[subId];
+  var cb = document.getElementById('sub-' + subId);
+  if (cb) cb.checked = selected[subId];
+
+  // Update card selected state
+  var cat = CATEGORIES.find(function(c){ return c.id === catId; });
+  var card = document.getElementById('cat-' + catId);
+  var hasSelected = cat.subs.some(function(s){ return selected[s.id]; });
+  card.classList.toggle('selected', hasSelected);
+
+  // Update count badge in card
+  var selectedCount = cat.subs.filter(function(s){ return selected[s.id]; }).length;
+  card.querySelector('.cat-count').innerHTML = cat.subs.length + ' services'
+    + (selectedCount ? ' &middot; <span style="color:var(--cyan)">' + selectedCount + ' selected</span>' : '');
+
+  updateFooter();
+}
+
+function updateFooter() {
+  var totalSubs = Object.keys(selected).filter(function(k){ return selected[k]; }).length;
+  var totalCats = CATEGORIES.filter(function(cat){
+    return cat.subs.some(function(s){ return selected[s.id]; });
+  }).length;
+
+  var summary = document.getElementById('selSummary');
+  var btn = document.getElementById('buildBtn');
+
+  if (totalSubs === 0) {
+    summary.innerHTML = 'Select at least one service category to continue.';
+    btn.classList.remove('active');
+  } else {
+    summary.innerHTML = '<strong>' + totalSubs + ' service' + (totalSubs !== 1 ? 's' : '') + '</strong> selected across <strong>' + totalCats + ' categor' + (totalCats !== 1 ? 'ies' : 'y') + '</strong>';
+    btn.classList.add('active');
+  }
+}
+
+function buildDashboard() {
+  if (!document.getElementById('buildBtn').classList.contains('active')) return;
+
+  // Collect all keywords from selected subs
+  var kws = [];
+  CATEGORIES.forEach(function(cat){
+    cat.subs.forEach(function(sub){
+      if (selected[sub.id]) {
+        sub.kws.forEach(function(kw){ if (!kws.includes(kw)) kws.push(kw); });
+      }
+    });
+  });
+
+  // Collect selected sub labels as readable services
+  var serviceLabels = [];
+  CATEGORIES.forEach(function(cat){
+    cat.subs.forEach(function(sub){
+      if (selected[sub.id]) serviceLabels.push(sub.label);
+    });
+  });
+
+  // Save to profile
+  var profile = PROFILE;
+  profile.keywords = kws;
+  profile.services = serviceLabels;
+  profile.commodity_codes = [];
+  profile.state = 'CA';
+  if (!profile.business_name && SESSION.business_name) profile.business_name = SESSION.business_name;
+  localStorage.setItem(PROFILE_KEY, JSON.stringify(profile));
+
+  // Update session keywords
+  if (SESSION.token) {
+    SESSION.keywords = kws;
+    localStorage.setItem(SESSION_KEY, JSON.stringify(SESSION));
+  }
+
+  location.href = '/dashboard.html';
+}
+
+// Init
+buildGrid();
+</script>
+</body>
+</html>
+
