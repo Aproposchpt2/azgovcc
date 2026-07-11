@@ -1,0 +1,437 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>AzGovCC â€” Arizona Government Contracts Center</title>
+<meta name="robots" content="noindex"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;1,6..96,400&family=Cormorant:ital,wght@1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0F2A6A;--white:#fff;--silver:#C3D0E8;--line:rgba(255,255,255,.12);--line2:rgba(255,255,255,.22);--green:#6EE7A8;--cyan:#5bd3ff;--amber:#F5C36B;--gold:#C9A84C;--red:#F87171;--disp:'Bodoni Moda',Georgia,serif;--body:'Jost',sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{font-family:var(--body);background:linear-gradient(160deg,#0c2257,#070e1e 60%,#040914);min-height:100vh;color:rgba(255,255,255,.82)}
+.topbar{background:rgba(7,20,50,.95);border-bottom:1px solid var(--line);padding:.9rem 1.6rem;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;position:sticky;top:0;z-index:200}
+.brand{display:flex;align-items:center;gap:10px}
+.mark{width:36px;height:36px;border-radius:8px;background:#fff;color:var(--ink);font-weight:700;font-size:.8rem;display:grid;place-items:center;font-family:var(--body);flex-shrink:0}
+.bname{font-family:var(--disp);font-size:1.05rem;color:#fff;line-height:1}
+.bsub{font-size:.52rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.4)}
+.nav-right{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.pill{font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.5);background:rgba(255,255,255,.05);border:1px solid var(--line);border-radius:999px;padding:.35rem .8rem}
+.pill::before{content:"â—";color:var(--green);margin-right:5px;font-size:.55em}
+.update-btn{font-family:var(--body);font-size:.6rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.65);background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.15);border-radius:6px;padding:.42rem .85rem;cursor:pointer;transition:.15s}
+.update-btn:hover{color:#fff;background:rgba(255,255,255,.12)}
+.shell{max-width:1100px;margin:0 auto;padding:1.6rem 1.2rem 4rem}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:1.6rem}
+.stat{background:rgba(255,255,255,.05);border:1px solid var(--line);border-radius:10px;padding:1rem 1.1rem}
+.stat .n{font-family:var(--disp);font-size:1.8rem;color:#fff;line-height:1}
+.stat .l{font-size:.55rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-top:.4rem}
+.board-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:1.1rem}
+.board-title{font-family:var(--disp);font-size:1.4rem;color:#fff}
+.board-eye{font-size:.55rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:.35rem}
+.vtoggle{display:inline-flex;gap:3px;background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:6px;padding:3px}
+.vt{font-family:var(--body);font-size:.68rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.5);background:transparent;border:0;border-radius:4px;padding:.42rem .85rem;cursor:pointer;transition:.12s}
+.vt.on{background:#fff;color:var(--ink)}
+.vt:hover:not(.on){color:#fff}
+.bid{display:flex;align-items:center;gap:12px;padding:1rem 1.1rem;background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:10px;margin-bottom:8px;transition:.15s}
+.bid:hover{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.18)}
+.avatar{width:40px;height:40px;border-radius:8px;background:linear-gradient(135deg,rgba(91,211,255,.18),rgba(91,211,255,.05));border:1px solid rgba(91,211,255,.2);color:var(--cyan);font-size:.7rem;font-weight:700;display:grid;place-items:center;flex-shrink:0;letter-spacing:.04em}
+.body{flex:1;min-width:0}
+.ttl{color:#fff;font-size:.9rem;font-weight:500;line-height:1.3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.meta{font-size:.72rem;color:rgba(255,255,255,.45);margin-top:.22rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.dot{margin:0 .4rem;opacity:.4}
+.soonflag{color:var(--amber)}
+.right{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.scorewrap{display:flex;flex-direction:column;align-items:center;gap:3px}
+.slabel{font-size:.56rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.viewbtn{font-family:var(--body);font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#fff;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:7px;padding:.5rem 1rem;cursor:pointer;transition:.15s;white-space:nowrap}
+.viewbtn:hover{background:rgba(255,255,255,.18);border-color:rgba(255,255,255,.35)}
+.empty{text-align:center;padding:2.4rem;color:rgba(255,255,255,.4);font-size:.9rem}
+.intake-banner{background:rgba(91,211,255,.06);border:1px solid rgba(91,211,255,.18);border-radius:12px;padding:1.2rem 1.4rem;margin-bottom:1.4rem;display:none}
+.intake-banner.show{display:block}
+.intake-title{font-family:var(--disp);font-size:1.1rem;color:#fff;margin-bottom:.4rem}
+.intake-sub{font-size:.82rem;color:rgba(255,255,255,.55);margin-bottom:.9rem}
+.intake-row{display:flex;gap:10px;flex-wrap:wrap}
+.intake-row input{flex:1;min-width:200px;font-family:var(--body);font-size:.9rem;font-weight:300;color:#fff;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.18);border-radius:8px;padding:.65rem .9rem}
+.intake-row input:focus{outline:none;border-color:rgba(91,211,255,.5)}
+.intake-row button{font-family:var(--body);font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);background:var(--cyan);border:none;border-radius:8px;padding:.7rem 1.3rem;cursor:pointer;white-space:nowrap}
+.kw-tags{display:flex;gap:7px;flex-wrap:wrap;margin-top:.8rem}
+.kwtag{display:inline-flex;align-items:center;gap:.4rem;font-size:.72rem;color:rgba(255,255,255,.7);background:rgba(91,211,255,.08);border:1px solid rgba(91,211,255,.15);border-radius:999px;padding:.28rem .75rem}
+#ca-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:400;backdrop-filter:blur(3px)}
+#ca-drawer{position:fixed;top:0;right:0;bottom:0;width:min(540px,100vw);background:linear-gradient(160deg,#0d1f4d,#070e1e);border-left:1px solid rgba(255,255,255,.14);z-index:401;transform:translateX(100%);transition:transform .28s cubic-bezier(.4,0,.2,1);overflow-y:auto;display:flex;flex-direction:column}
+#ca-drawer.open{transform:translateX(0)}
+#ca-drawer-top{padding:1.2rem 1.3rem .9rem;border-bottom:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:space-between;gap:10px;flex-shrink:0}
+#ca-drawer-title{font-family:var(--disp);font-size:1rem;color:rgba(255,255,255,.65)}
+#ca-close{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:6px;color:rgba(255,255,255,.55);font-size:.85rem;padding:.35rem .65rem;cursor:pointer;transition:.15s;flex-shrink:0}
+#ca-close:hover{color:#fff;background:rgba(255,255,255,.14)}
+#ca-drawer-body{padding:1.2rem 1.3rem;flex:1}
+.ca-type-badge{display:inline-block;font-size:.54rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:.22rem .65rem;border-radius:4px;margin-bottom:.8rem}
+.ca-type-rfp{background:rgba(91,211,255,.15);color:var(--cyan);border:1px solid rgba(91,211,255,.3)}
+.ca-type-rfq{background:rgba(245,195,107,.12);color:var(--amber);border:1px solid rgba(245,195,107,.25)}
+.ca-type-bid{background:rgba(255,255,255,.08);color:rgba(255,255,255,.6);border:1px solid rgba(255,255,255,.15)}
+.ca-bid-heading{font-family:var(--disp);font-size:1.32rem;color:#fff;line-height:1.25;margin-bottom:.5rem}
+.ca-agency{font-size:.8rem;color:rgba(255,255,255,.5);margin-bottom:1rem}
+.ca-urgency{display:inline-block;font-size:.6rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:.28rem .75rem;border-radius:999px;margin-bottom:1rem}
+.ca-urgency-high{background:rgba(248,113,113,.15);color:var(--red);border:1px solid rgba(248,113,113,.3)}
+.ca-urgency-med{background:rgba(245,195,107,.12);color:var(--amber);border:1px solid rgba(245,195,107,.25)}
+.ca-urgency-ok{background:rgba(110,231,168,.08);color:var(--green);border:1px solid rgba(110,231,168,.2)}
+.ca-meta-grid{display:grid;grid-template-columns:1fr 1fr;gap:.65rem;margin-bottom:1.1rem}
+.ca-meta-cell{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:8px;padding:.6rem .75rem}
+.ca-meta-cell .ml{font-size:.52rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:.2rem}
+.ca-meta-cell .mv{font-size:.82rem;color:rgba(255,255,255,.75)}
+.ca-actions{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:1rem}
+.ca-btn-primary{font-family:var(--body);font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);background:var(--cyan);border:none;border-radius:9px;padding:.75rem;cursor:pointer;transition:.15s}
+.ca-btn-primary:hover{background:#7fe0ff}
+.ca-btn-primary:disabled{opacity:.6;cursor:wait}
+.ca-btn-gold{font-family:var(--body);font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);background:var(--gold);border:none;border-radius:9px;padding:.75rem;cursor:pointer;transition:.15s}
+.ca-btn-gold:hover{background:#e8b84a}
+.foot{border-top:1px solid var(--line);margin-top:2.4rem;padding-top:1.2rem;text-align:center;font-size:.68rem;color:rgba(255,255,255,.28);letter-spacing:.08em}
+@media(max-width:700px){.stats{grid-template-columns:1fr 1fr}.right{gap:6px}.ttl{font-size:.84rem}}
+@media(max-width:440px){.ca-actions{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="brand">
+    <span class="mark">AZ</span>
+    <span>
+      <div class="bname">Arizona Government Contracts Center</div>
+      <div class="bsub">AzGovCC &middot; Apropos Group LLC</div>
+    </span>
+  </div>
+  <div class="nav-right">
+    <span class="pill">Live California bid board</span>
+    <button class="update-btn" onclick="showIntake()">&#9998; Update My Services</button>
+  </div>
+</div>
+
+<div class="shell">
+  <div class="stats">
+    <div class="stat"><div class="n" id="sOpen">&#8212;</div><div class="l">Open solicitations</div></div>
+    <div class="stat"><div class="n" id="sMatched">&#8212;</div><div class="l">Match your services</div></div>
+    <div class="stat"><div class="n" id="sSoon">&#8212;</div><div class="l">Closing within 7 days</div></div>
+    <div class="stat"><div class="n">AZ</div><div class="l">State &middot; County &middot; City &middot; University</div></div>
+  </div>
+
+  <div class="intake-banner" id="intakeBanner">
+    <div class="intake-title">What does your California business do?</div>
+    <div class="intake-sub">Enter your services or trades &mdash; AzGovCC matches open government solicitations to your profile.</div>
+    <div class="intake-row">
+      <input id="kwInput" type="text" placeholder="e.g. IT services, software, consulting, construction, landscaping&hellip;"/>
+      <button onclick="saveKeywords()">Build My Dashboard</button>
+    </div>
+    <div class="kw-tags" id="kwTags"></div>
+  </div>
+
+  <div class="board-head">
+    <div>
+      <div class="board-eye">Arizona public agency solicitations</div>
+      <div class="board-title">Open bids</div>
+    </div>
+    <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+      <div class="vtoggle" id="vtoggle" style="display:none">
+        <button class="vt on" data-v="all" onclick="setView('all',this)">All open bids</button>
+        <button class="vt" data-v="matches" onclick="setView('matches',this)">My matches <span id="mCount"></span></button>
+      </div>
+    </div>
+  </div>
+
+  <div id="bids"><div class="empty">Loading Arizona solicitations&hellip;</div></div>
+</div>
+
+<div id="ca-overlay" onclick="closeCaDrawer()"></div>
+<div id="ca-drawer">
+  <div id="ca-drawer-top">
+    <span id="ca-drawer-title">Solicitation</span>
+    <button id="ca-close" onclick="closeCaDrawer()">&#10005; Close</button>
+  </div>
+  <div id="ca-drawer-body"></div>
+</div>
+
+<div class="foot">&copy; 2026 Apropos Group LLC &middot; Arizona Government Contracts Center &middot; All rights reserved.</div>
+
+<script>
+'use strict';
+var API = '/.netlify/functions';
+var $ = function(id){ return document.getElementById(id); };
+var esc = function(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); };
+
+var SESSION_KEY = 'AzGovCC_session';
+var PROFILE_KEY = 'AzGovCC_profile';
+var raw = localStorage.getItem(SESSION_KEY) || sessionStorage.getItem(SESSION_KEY);
+var SESSION = raw ? JSON.parse(raw) : null;
+if (!SESSION || !SESSION.token) { location.href = '/login.html'; }
+
+var PROFILE = JSON.parse(localStorage.getItem(PROFILE_KEY) || '{}');
+if (!PROFILE.keywords) PROFILE = { keywords: SESSION ? (SESSION.keywords || []) : [], business_name: SESSION ? (SESSION.business_name || 'Apropos Group LLC') : 'Apropos Group LLC', commodity_codes: [] };
+
+/* California NIGP commodity classifier */
+var _CKW = {"20800":["software","saas","application","app","platform","erp","crm","system","database","analytics","scheduling","management system","student information","campus system"],"20810":["computer","laptop","server","hardware","workstation","tablet","monitor","device"],"20900":["information technology","it services","managed services","helpdesk","tech support","cloud","hosting","cybersecurity","network","infrastructure","data center","systems integration"],"58000":["maintenance","repair","facility maintenance","building maintenance","preventive maintenance","service contract","janitorial","custodial","cleaning"],"67000":["food","beverage","catering","food service","cafeteria","dining","meal","nutrition","vending"],"72000":["healthcare","medical","health","clinical","patient","nursing","pharmacy","dental","behavioral health","mental health"],"80000":["professional services","consulting","advisory","management consulting","business analysis","project management","strategic planning"],"91000":["construction","general contractor","contractor","building","renovation","remodel","infrastructure","civil","grading","earthwork"],"91400":["electrical","wiring","electrician","power systems","solar","photovoltaic","lighting","low voltage"],"91500":["plumbing","pipe","mechanical","hvac","heating","cooling","air conditioning","ventilation","boiler"],"91700":["roofing","roof","waterproofing","membrane"],"91800":["paving","asphalt","concrete","road","parking","grading","earthwork","excavation","highway"],"92000":["landscape","grounds","lawn","irrigation","turf","tree","mowing","arborist"],"92500":["architectural","architecture","architect","design services","interior design","space planning","master plan"],"92600":["engineering","civil engineering","structural","mechanical engineering","environmental engineering","land survey","gis","mapping"],"92700":["environmental","sustainability","environmental consulting","air quality","CARB","CalRecycle","waste management","remediation","stormwater"],"93000":["legal","attorney","law","counsel","litigation","compliance","regulatory"],"93500":["financial","accounting","audit","CPA","fiscal","budget","grants management","bond"],"93700":["staffing","temporary","hr","human resources","workforce","employment","recruiting","payroll"],"94000":["marketing","public relations","communications","advertising","outreach","branding","media","social media"],"94500":["training","education","professional development","workforce development","e-learning","certification","coaching"],"95000":["transportation","logistics","delivery","freight","fleet","vehicles","transit","shuttle","bus","paratransit"],"96000":["security","surveillance","access control","guard","patrol","alarm","monitoring","safety","fire alarm","fire protection"],"97000":["telecommunications","telecom","wireless","cellular","broadband","voice","5G","fiber","radio"],"98000":["printing","publishing","signage","graphic design","creative","documents","publications"]};
+
+function classifyBid(b) {
+  var text = (b.title + ' ' + (b.agency || '')).toLowerCase();
+  var scores = {};
+  for (var code in _CKW) {
+    var kws = _CKW[code];
+    for (var i = 0; i < kws.length; i++) {
+      if (text.indexOf(kws[i]) !== -1) scores[code] = (scores[code] || 0) + (kws[i].indexOf(' ') !== -1 ? 2 : 1);
+    }
+  }
+  return Object.keys(scores).sort(function(a,b){ return scores[b]-scores[a]; }).slice(0,6);
+}
+
+function userCodes() {
+  var kws = (PROFILE.keywords || []).map(function(k){ return k.toLowerCase(); });
+  var codes = {};
+  (PROFILE.commodity_codes || []).forEach(function(c){ codes[c] = 1; });
+  for (var i = 0; i < kws.length; i++) {
+    for (var code in _CKW) {
+      var ckws = _CKW[code];
+      for (var j = 0; j < ckws.length; j++) {
+        if (ckws[j].indexOf(kws[i]) !== -1 || kws[i].indexOf(ckws[j]) !== -1) codes[code] = 1;
+      }
+    }
+  }
+  return Object.keys(codes);
+}
+
+function hits(bid) {
+  if (!PROFILE.keywords || !PROFILE.keywords.length) return 0;
+  var text = (bid.title + ' ' + (bid.agency || '')).toLowerCase();
+  var kwScore = 0;
+  for (var i = 0; i < PROFILE.keywords.length; i++) if (text.indexOf(PROFILE.keywords[i].toLowerCase()) !== -1) kwScore++;
+  var uc = userCodes();
+  var bc = classifyBid(bid);
+  var codeScore = 0;
+  for (var j = 0; j < bc.length; j++) if (uc.indexOf(bc[j]) !== -1) codeScore++;
+  return kwScore + codeScore * 1.5;
+}
+
+function fitColor(f) { return f > 2 ? 'var(--green)' : f > 0 ? 'var(--cyan)' : 'rgba(255,255,255,.3)'; }
+function fitLabel(f) { return f > 2 ? 'Strong match' : f > 0 ? 'Possible match' : 'General'; }
+
+function gauge(f, r, sw) {
+  var pct = Math.min(1, f / 4);
+  var c = f > 2 ? '#6EE7A8' : f > 0 ? '#5bd3ff' : 'rgba(255,255,255,.2)';
+  var arc = 2 * Math.PI * (r - sw / 2);
+  var dash = pct * arc;
+  return '<svg width="'+(r*2)+'" height="'+(r*2)+'" viewBox="0 0 '+(r*2)+' '+(r*2)+'"><circle cx="'+r+'" cy="'+r+'" r="'+(r-sw/2)+'" fill="none" stroke="rgba(255,255,255,.07)" stroke-width="'+sw+'"/><circle cx="'+r+'" cy="'+r+'" r="'+(r-sw/2)+'" fill="none" stroke="'+c+'" stroke-width="'+sw+'" stroke-dasharray="'+dash+' '+arc+'" stroke-linecap="round" transform="rotate(-90 '+r+' '+r+')"/></svg>';
+}
+
+function initials(s) { return (s||'CA').split(/\s+/).map(function(w){return w[0]||'';}).join('').slice(0,2).toUpperCase(); }
+function dueText(d) { if (d==null) return 'Open'; if (d<=0) return 'Closing today'; if (d===1) return '1 day left'; return d+' days left'; }
+
+var ALL = [], view = 'all', _BID_MAP = {};
+
+function visible() {
+  var rows = ALL.map(function(b){ return {b:b, f:hits(b)}; });
+  rows.sort(function(a,b){ return b.f-a.f || (a.b.due_in_days!=null?a.b.due_in_days:9999)-(b.b.due_in_days!=null?b.b.due_in_days:9999); });
+  return view === 'matches' ? rows.filter(function(r){ return r.f>0; }) : rows;
+}
+
+function render() {
+  var rows = visible();
+  _BID_MAP = {};
+  if (!rows.length) {
+    $('bids').innerHTML = '<div class="empty">'+(view==='matches'?'No open bids match your services today &mdash; new solicitations post daily.':'No Arizona bids loaded. Please refresh.')+'</div>';
+    return;
+  }
+  $('bids').innerHTML = rows.map(function(row, i){
+    var b=row.b, f=row.f;
+    _BID_MAP[i] = b;
+    var soon = b.due_in_days!=null && b.due_in_days<=7;
+    return '<div class="bid"><div class="avatar">'+esc(initials(b.agency))+'</div>'
+      +'<div class="body"><div class="ttl">'+esc(b.title)+'</div>'
+      +'<div class="meta">'+esc(b.agency)+'<span class="dot">&middot;</span><span class="'+(soon?'soonflag':'')+'">'+ esc(dueText(b.due_in_days))+'</span>'
+      +(b.solicitation_no?'<span class="dot">&middot;</span>'+esc(b.solicitation_no):'')+'</div></div>'
+      +'<div class="right"><div class="scorewrap">'+gauge(f,46,4)+'<div class="slabel" style="color:'+fitColor(f)+'">'+fitLabel(f)+'</div></div>'
+      +'<button class="viewbtn" onclick="openCaDrawer('+i+')">View Bid</button></div></div>';
+  }).join('');
+}
+
+function setStats() {
+  $('sOpen').textContent = ALL.length;
+  $('sMatched').textContent = ALL.filter(function(b){ return hits(b)>0; }).length;
+  $('sSoon').textContent = ALL.filter(function(b){ return b.due_in_days!=null && b.due_in_days<=7; }).length;
+}
+
+function setView(v, el) {
+  view = v;
+  document.querySelectorAll('.vt').forEach(function(b){ b.classList.toggle('on', b===el); });
+  render();
+}
+
+function loadBids() {
+  fetch(API+'/az-pipeline')
+    .then(function(r){ return r.json(); })
+    .then(function(data){
+      ALL = data.bids || [];
+      setStats();
+      var hasKw = PROFILE.keywords && PROFILE.keywords.length > 0;
+      if (hasKw) {
+        $('vtoggle').style.display = '';
+        $('mCount').textContent = '('+ALL.filter(function(b){ return hits(b)>0; }).length+')';
+        view = 'matches';
+        document.querySelector('.vt[data-v="matches"]').classList.add('on');
+        document.querySelector('.vt[data-v="all"]').classList.remove('on');
+      }
+      render();
+    })
+    .catch(function(){
+      $('bids').innerHTML = '<div class="empty">Could not load Arizona solicitations. Please refresh.</div>';
+    });
+}
+
+function showIntake() { $('intakeBanner').classList.add('show'); $('kwInput').focus(); }
+
+function saveKeywords() {
+  var raw = $('kwInput').value.trim();
+  if (!raw) return;
+  var kws = raw.split(/[,\n]+/).map(function(k){ return k.trim(); }).filter(Boolean).slice(0,12);
+  var merged = (PROFILE.keywords||[]).concat(kws).map(function(k){ return k.toLowerCase(); });
+  PROFILE.keywords = merged.filter(function(v,i,a){ return a.indexOf(v)===i; }).slice(0,12);
+  PROFILE.commodity_codes = userCodes();
+  localStorage.setItem(PROFILE_KEY, JSON.stringify(PROFILE));
+  $('kwInput').value = '';
+  renderTags();
+  $('vtoggle').style.display = '';
+  $('mCount').textContent = '('+ALL.filter(function(b){ return hits(b)>0; }).length+')';
+  view = 'matches';
+  document.querySelector('.vt[data-v="matches"]').classList.add('on');
+  document.querySelector('.vt[data-v="all"]').classList.remove('on');
+  render(); setStats();
+}
+
+function renderTags() {
+  $('kwTags').innerHTML = (PROFILE.keywords||[]).map(function(k){ return '<span class="kwtag"><b>'+esc(k)+'</b></span>'; }).join('');
+}
+
+if (!PROFILE.keywords || !PROFILE.keywords.length) $('intakeBanner').classList.add('show');
+
+/* CA BID DRAWER */
+var _caBid = null, _caDetail = null;
+
+function openCaDrawer(idx) {
+  var bid = _BID_MAP[idx];
+  if (!bid) return;
+  _caBid = bid; _caDetail = null;
+
+  var urgClass = bid.due_in_days==null?'': bid.due_in_days<=3?'ca-urgency-high': bid.due_in_days<=7?'ca-urgency-med':'ca-urgency-ok';
+  var typeClass = (bid.bid_type||'').indexOf('RFP')!==-1?'ca-type-rfp':(bid.bid_type||'').indexOf('RFQ')!==-1?'ca-type-rfq':'ca-type-bid';
+
+  $('ca-drawer-title').textContent = bid.agency || 'Arizona Solicitation';
+  $('ca-drawer-body').innerHTML =
+    '<span class="ca-type-badge '+typeClass+'">'+esc(bid.bid_type||'SOLICITATION')+'</span>'
+    +'<div class="ca-bid-heading">'+esc(bid.title)+'</div>'
+    +'<div class="ca-agency">'+esc(bid.agency||'Arizona State Agency')+'</div>'
+    +(bid.due_in_days!=null?'<span class="ca-urgency '+urgClass+'">'+esc(dueText(bid.due_in_days))+'</span>':'')
+    +'<div class="ca-meta-grid">'
+    +'<div class="ca-meta-cell"><div class="ml">Solicitation #</div><div class="mv">'+esc(bid.solicitation_no||'&mdash;')+'</div></div>'
+    +'<div class="ca-meta-cell"><div class="ml">Type</div><div class="mv">'+esc(bid.bid_type||'Solicitation')+'</div></div>'
+    +'<div class="ca-meta-cell"><div class="ml">Issue Date</div><div class="mv">'+esc(bid.issue_date||'&mdash;')+'</div></div>'
+    +'<div class="ca-meta-cell"><div class="ml">Close Date</div><div class="mv">'+esc(bid.close_date||'See bid docs')+'</div></div>'
+    +'</div>'
+    +'<div class="ca-actions">'
+    +'<button class="ca-btn-primary" id="ca-analyze-btn" onclick="analyzeCaFit()">&#9733; Analyze Fit for '+esc(PROFILE.business_name||'Apropos Group LLC')+'</button>'
+    +'<button class="ca-btn-gold" onclick="openCaProposal()">&#9998; Generate Proposal Draft</button>'
+    +'</div>';
+
+  $('ca-overlay').style.display = 'block';
+  $('ca-drawer').classList.add('open');
+  document.body.style.overflow = 'hidden';
+
+  if (bid.url && bid.url.indexOf('/events/') === -1) {
+    fetch(API+'/az-detail?url='+encodeURIComponent(bid.url))
+      .then(function(r){ return r.json(); })
+      .then(function(d){
+        if (!d.ok) return;
+        _caDetail = d;
+        var body = $('ca-drawer-body');
+        if (d.description) {
+          var sow = document.createElement('div');
+          sow.style.cssText = 'margin-top:1.2rem;padding:1rem 1.1rem;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:10px';
+          sow.innerHTML = '<div style="font-size:.56rem;letter-spacing:.18em;text-transform:uppercase;color:var(--cyan);font-weight:700;margin-bottom:.5rem">Scope of Work</div>'
+            +'<div style="font-size:.84rem;color:rgba(255,255,255,.75);line-height:1.65">'+esc(d.description)+'</div>';
+          body.appendChild(sow);
+        }
+        if (d.documents && d.documents.length) {
+          var docs = document.createElement('div');
+          docs.style.cssText = 'margin-top:.8rem;padding:1rem 1.1rem;background:rgba(91,211,255,.04);border:1px solid rgba(91,211,255,.12);border-radius:10px';
+          docs.innerHTML = '<div style="font-size:.56rem;letter-spacing:.18em;text-transform:uppercase;color:var(--cyan);font-weight:700;margin-bottom:.6rem">Bid Documents</div>'
+            +d.documents.map(function(doc){ return '<div style="font-size:.8rem;color:rgba(255,255,255,.7);padding:.25rem 0;border-bottom:1px solid rgba(255,255,255,.06)">&#128196; '+esc(doc)+'</div>'; }).join('');
+          body.appendChild(docs);
+        }
+        if (d.contactName||d.contactEmail) {
+          var ct = document.createElement('div');
+          ct.style.cssText = 'margin-top:.8rem;font-size:.78rem;color:rgba(255,255,255,.5)';
+          ct.innerHTML = '<b style="color:rgba(255,255,255,.65)">Contact:</b> '+esc(d.contactName||'')+(d.contactEmail?' &middot; '+esc(d.contactEmail):'');
+          body.appendChild(ct);
+        }
+      })
+      .catch(function(){});
+  }
+}
+
+function closeCaDrawer() {
+  $('ca-drawer').classList.remove('open');
+  $('ca-overlay').style.display = 'none';
+  document.body.style.overflow = '';
+}
+
+function analyzeCaFit() {
+  if (!_caBid) return;
+  var btn = $('ca-analyze-btn');
+  btn.textContent = 'Analyzing bidâ€¦';
+  btn.disabled = true;
+  var prev = document.getElementById('ca-analysis-result');
+  if (prev) prev.remove();
+  fetch(API+'/analyze-fit-az', {
+    method:'POST', headers:{'Content-Type':'application/json'},
+    body: JSON.stringify({ bid: Object.assign({}, _caBid, {description: _caDetail && _caDetail.description || null}), profile: PROFILE })
+  })
+  .then(function(r){ return r.json(); })
+  .then(function(data){
+    if (!data.ok) throw new Error(data.error||'Analysis failed.');
+    var a = data.analysis;
+    var rc = a.recommendation==='GO'?'var(--green)':a.recommendation==='NO-GO'?'var(--red)':'var(--amber)';
+    var rb = a.recommendation==='GO'?'rgba(62,227,145,.1)':a.recommendation==='NO-GO'?'rgba(255,105,105,.1)':'rgba(245,195,107,.1)';
+    $('ca-drawer-body').insertAdjacentHTML('beforeend',
+      '<div id="ca-analysis-result" style="margin-top:1rem;border:1px solid '+rc+';border-radius:12px;background:'+rb+';padding:1.1rem 1.2rem">'
+      +'<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.8rem">'
+      +'<span style="font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:'+rc+';font-weight:800">AI Fit Analysis</span>'
+      +'<span style="font-family:var(--disp);font-size:1.6rem;color:'+rc+';font-weight:700">'+a.score+'%</span></div>'
+      +'<div style="font-size:1rem;font-weight:700;color:#fff;margin-bottom:.5rem">'+esc(a.recommendation)+' &mdash; '+esc(a.summary)+'</div>'
+      +(a.strengths&&a.strengths.length?'<div style="font-size:.78rem;color:rgba(255,255,255,.6);margin-bottom:.4rem"><b style="color:var(--green)">&#10003; Strengths:</b> '+a.strengths.map(function(s){return esc(s);}).join(' &middot; ')+'</div>':'')
+      +(a.risks&&a.risks.length?'<div style="font-size:.78rem;color:rgba(255,255,255,.6);margin-bottom:.4rem"><b style="color:var(--amber)">&#9888; Risks:</b> '+a.risks.map(function(r){return esc(r);}).join(' &middot; ')+'</div>':'')
+      +(a.next_steps?'<div style="font-size:.8rem;color:rgba(255,255,255,.7);margin-top:.6rem;padding-top:.6rem;border-top:1px solid rgba(255,255,255,.1)"><b>Next step:</b> '+esc(a.next_steps)+'</div>':'')
+      +'</div>');
+    btn.textContent = '&#10003; Analysis Complete â€” Refresh';
+  })
+  .catch(function(e){
+    btn.textContent = '&#9733; Analyze Fit for '+(PROFILE.business_name||'Apropos Group LLC');
+    alert('Analysis error: '+e.message);
+  })
+  .finally(function(){ btn.disabled = false; });
+}
+
+function openCaProposal() {
+  if (!_caBid) return;
+  var params = new URLSearchParams({
+    title:_caBid.title||'', agency:_caBid.agency||'', sol:_caBid.solicitation_no||'',
+    type:_caBid.bid_type||'', business:PROFILE.business_name||'Apropos Group LLC',
+    services:(PROFILE.keywords||[]).slice(0,5).join(', '),
+    description:(_caDetail&&_caDetail.description||'').slice(0,600)
+  });
+  window.open('/proposal.html?'+params.toString(),'_blank');
+}
+
+document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeCaDrawer(); });
+
+renderTags();
+loadBids();
+</script>
+</body>
+</html>
+

@@ -1,0 +1,24 @@
+[build]
+  publish = "."
+  functions = "netlify/functions"
+
+  [build.environment]
+    NODE_VERSION = "18"
+
+[functions]
+  node_bundler = "esbuild"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+[[edge_functions]]
+  path = "/"
+  function = "calstategen-nav-login-cta"
+
+[[edge_functions]]
+  path = "/index.html"
+  function = "calstategen-nav-login-cta"
