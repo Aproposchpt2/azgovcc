@@ -95,9 +95,10 @@ $('verifyBtn').addEventListener('click', async ()=>{
     const res=await fetch(VERIFY,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:theEmail,code,state:STATE})});
     const d=await res.json();
     if(!res.ok) throw new Error(d.error||'Could not verify.');
-    localStorage.setItem('azgovcc_session', JSON.stringify({ token: d.token, state: 'CA', business_name: d.business_name, keywords: d.keywords || [] }));
-    m.className='msg ok'; m.textContent='Signed in â€” opening your dashboardâ€¦';
-    location.href='/dashboard.html';
+    localStorage.setItem('azgovcc_session', JSON.stringify({ token: d.token, state: 'AZ', business_name: d.business_name, keywords: d.keywords || [] }));
+    m.className='msg ok'; m.textContent='Signed in — setting up your dashboard…';
+    var profile = JSON.parse(localStorage.getItem('azgovcc_profile') || '{}');
+    location.href = (profile.keywords && profile.keywords.length) ? '/dashboard.html' : '/onboarding.html';
   }catch(e){ m.className='msg err'; m.textContent=e.message; b.disabled=false; b.textContent='Sign in â†’'; }
 });
 $('code').addEventListener('keydown',e=>{ if(e.key==='Enter') $('verifyBtn').click(); });

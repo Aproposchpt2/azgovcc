@@ -15,10 +15,22 @@
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
 
-[[edge_functions]]
-  path = "/"
-  function = "calstategen-nav-login-cta"
+[[redirects]]
+  from = "/dashboard"
+  to   = "/dashboard.html"
+  status = 200
 
-[[edge_functions]]
-  path = "/index.html"
-  function = "calstategen-nav-login-cta"
+[[redirects]]
+  from = "/login"
+  to   = "/login.html"
+  status = 200
+
+[[redirects]]
+  from = "/onboarding"
+  to   = "/onboarding.html"
+  status = 200
+
+[[redirects]]
+  from = "/proposal"
+  to   = "/proposal.html"
+  status = 200
