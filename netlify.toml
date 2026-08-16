@@ -7,6 +7,13 @@
 
 [functions]
   node_bundler = "esbuild"
+  # az-pipeline.js reads bids.json at runtime via fs.readFileSync, not a
+  # static require/import -- esbuild can't trace that, so without this the
+  # committed bids.json never makes it into the deployed function bundle and
+  # the function silently falls back to SAMPLE_BIDS forever. Confirmed live
+  # 2026-08-16: real bids.json committed, function still returned
+  # scanMode:"sample" until this was added.
+  included_files = ["bids.json"]
 
 [[headers]]
   for = "/*"
