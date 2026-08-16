@@ -1,0 +1,9 @@
+{
+  "name": "azgovcc-ingest",
+  "private": true,
+  "type": "commonjs",
+  "scripts": {
+    "scrape-phoenix": "node scripts/scrape-phoenix.js",
+    "sync-supabase": "node scripts/sync-supabase-az.js"
+  }
+}
