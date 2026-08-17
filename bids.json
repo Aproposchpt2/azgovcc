@@ -2,7 +2,7 @@
   "source": "arizona-procurement",
   "state": "AZ",
   "scanMode": "live",
-  "generatedAt": "2026-08-17T06:14:27.135Z",
+  "generatedAt": "2026-08-17T13:53:37.381Z",
   "count": 21,
   "bids": [
     {
@@ -38,6 +38,22 @@
       "status": "live"
     },
     {
+      "id": "phx-212099",
+      "source_record_id": "212099",
+      "solicitation_no": "PTD RFI26-008",
+      "title": "Paratransit Scheduling and Dispatch System Software",
+      "bid_type": "Request for Information",
+      "agency": "City of Phoenix — Public Transit",
+      "description": "This Request for Information (RFI) is issued as a means of discovery and information gathering for Paratransit Scheduling and Dispatch System Software. The RFI is for planning purposes only and should not be construed as a solicitation nor should it be construed as an obligation on the part of the City to make any purchases. This RFI should not be construed as a means to pre-qualify vendors. This is not a formal solicitation, but a request for interested parties to provide information as specified herein. Participation in this RFI is voluntary. No purchases will be made as a result of this request. Any price information provided shall be used for general comparison purposes only. Do not include applicable state and local taxes. OBTAINING A COPY OF THE RFI AND ADDENDA Interested parties may download the complete RFI and addenda from https://procurement.opengov.com/portal/phoenix . Internet access is available at all public libraries.",
+      "close_date": "2026-08-22T06:59:00.000Z",
+      "due_in_days": 5,
+      "daysToClose": 5,
+      "release_date": "2026-07-20T07:00:00.000Z",
+      "addendum_count": 0,
+      "url": "https://procurement.opengov.com/portal/phoenix/projects/212099",
+      "status": "live"
+    },
+    {
       "id": "phx-285935",
       "source_record_id": "285935",
       "solicitation_no": "IFB FY27-086-04",
@@ -67,22 +83,6 @@
       "release_date": "2026-07-24T07:00:00.000Z",
       "addendum_count": 1,
       "url": "https://procurement.opengov.com/portal/phoenix/projects/284978",
-      "status": "live"
-    },
-    {
-      "id": "phx-212099",
-      "source_record_id": "212099",
-      "solicitation_no": "PTD RFI26-008",
-      "title": "Paratransit Scheduling and Dispatch System Software",
-      "bid_type": "Request for Information",
-      "agency": "City of Phoenix — Public Transit",
-      "description": "This Request for Information (RFI) is issued as a means of discovery and information gathering for Paratransit Scheduling and Dispatch System Software. The RFI is for planning purposes only and should not be construed as a solicitation nor should it be construed as an obligation on the part of the City to make any purchases. This RFI should not be construed as a means to pre-qualify vendors. This is not a formal solicitation, but a request for interested parties to provide information as specified herein. Participation in this RFI is voluntary. No purchases will be made as a result of this request. Any price information provided shall be used for general comparison purposes only. Do not include applicable state and local taxes. OBTAINING A COPY OF THE RFI AND ADDENDA Interested parties may download the complete RFI and addenda from https://procurement.opengov.com/portal/phoenix . Internet access is available at all public libraries.",
-      "close_date": "2026-08-22T06:59:00.000Z",
-      "due_in_days": 6,
-      "daysToClose": 6,
-      "release_date": "2026-07-20T07:00:00.000Z",
-      "addendum_count": 0,
-      "url": "https://procurement.opengov.com/portal/phoenix/projects/212099",
       "status": "live"
     },
     {
@@ -134,6 +134,22 @@
       "status": "live"
     },
     {
+      "id": "phx-288316",
+      "source_record_id": "288316",
+      "solicitation_no": "IFB-27-0434",
+      "title": "Spoils Hauling Services",
+      "bid_type": "Invitation For Bid",
+      "agency": "City of Phoenix — Water Services",
+      "description": "The City of Phoenix invites sealed offers for Description . The Effective Date of this Agreement will be upon final signature and recording by the City Clerk's department. The Commencement Date of this A greement will be upon the contract term start date that the Phoenix City Council approves or the Effective Date, whichever is later. The term of this Agreement will be for 5 years, beginning on the Commencement Date, with no options to extend. This solicitation is available through the City's Procurement Portal. For technical support issues related to the City's Procurement Portal, Offeror may use the support bubble on the bottom right, or email procurement-support@opengov.com for any assistance. For other issues related to this solicitation please contact the procurement officer listed under Contact Information. Notwithstanding the foregoing, this Agreement will terminate upon the earliest occurrence: by reaching the end of the term including any extensions exercised, or termination pursuant to the provisions of this Agreement.",
+      "close_date": "2026-09-01T09:00:00.000Z",
+      "due_in_days": 15,
+      "daysToClose": 15,
+      "release_date": "2026-08-11T07:00:00.000Z",
+      "addendum_count": 0,
+      "url": "https://procurement.opengov.com/portal/phoenix/projects/288316",
+      "status": "live"
+    },
+    {
       "id": "phx-262478",
       "source_record_id": "262478",
       "solicitation_no": "IFB-26-0336",
@@ -150,19 +166,19 @@
       "status": "live"
     },
     {
-      "id": "phx-288316",
-      "source_record_id": "288316",
-      "solicitation_no": "IFB-27-0434",
-      "title": "Spoils Hauling Services",
-      "bid_type": "Invitation For Bid",
-      "agency": "City of Phoenix — Water Services",
-      "description": "The City of Phoenix invites sealed offers for Description . The Effective Date of this Agreement will be upon final signature and recording by the City Clerk's department. The Commencement Date of this A greement will be upon the contract term start date that the Phoenix City Council approves or the Effective Date, whichever is later. The term of this Agreement will be for 5 years, beginning on the Commencement Date, with no options to extend. This solicitation is available through the City's Procurement Portal. For technical support issues related to the City's Procurement Portal, Offeror may use the support bubble on the bottom right, or email procurement-support@opengov.com for any assistance. For other issues related to this solicitation please contact the procurement officer listed under Contact Information. Notwithstanding the foregoing, this Agreement will terminate upon the earliest occurrence: by reaching the end of the term including any extensions exercised, or termination pursuant to the provisions of this Agreement.",
-      "close_date": "2026-09-01T09:00:00.000Z",
-      "due_in_days": 16,
-      "daysToClose": 16,
-      "release_date": "2026-08-11T07:00:00.000Z",
-      "addendum_count": 0,
-      "url": "https://procurement.opengov.com/portal/phoenix/projects/288316",
+      "id": "phx-275740",
+      "source_record_id": "275740",
+      "solicitation_no": "PTD26-003",
+      "title": "Operations Control Center & Data Collection Services",
+      "bid_type": "Request For Proposal - Goods and General Services",
+      "agency": "City of Phoenix — Public Transit",
+      "description": "The City of Phoenix invites sealed offers for Description . The Effective Date of this Agreement will be upon final signature and recording by the City Clerk's department. The Commencement Date of this Agreement will be on or about July 1, 2027. The term of this Agreement will be for five (5) years, beginning on the Commencement Date, with one two-year option to extend , which may be exercised by the City in its sole discretion . This solicitation is available through the City's Procurement Portal. For technical support issues related to the City's Procurement Portal, Offeror may use the support bubble on the bottom right, or email procurement-support@opengov.com for any assistance. For other issues related to this solicitation please contact the procurement officer listed under Contact Information. Notwithstanding the foregoing, this Agreement will terminate upon the earliest occurrence: by reaching the end of the term including any extensions exercised, or termination pursuant to the provisions of this Agreement.",
+      "close_date": "2026-09-03T06:59:00.000Z",
+      "due_in_days": 17,
+      "daysToClose": 17,
+      "release_date": "2026-07-15T07:00:00.000Z",
+      "addendum_count": 1,
+      "url": "https://procurement.opengov.com/portal/phoenix/projects/275740",
       "status": "live"
     },
     {
@@ -195,22 +211,6 @@
       "release_date": "2026-06-05T18:49:22.421Z",
       "addendum_count": 2,
       "url": "https://procurement.opengov.com/portal/phoenix/projects/165230",
-      "status": "live"
-    },
-    {
-      "id": "phx-275740",
-      "source_record_id": "275740",
-      "solicitation_no": "PTD26-003",
-      "title": "Operations Control Center & Data Collection Services",
-      "bid_type": "Request For Proposal - Goods and General Services",
-      "agency": "City of Phoenix — Public Transit",
-      "description": "The City of Phoenix invites sealed offers for Description . The Effective Date of this Agreement will be upon final signature and recording by the City Clerk's department. The Commencement Date of this Agreement will be on or about July 1, 2027. The term of this Agreement will be for five (5) years, beginning on the Commencement Date, with one two-year option to extend , which may be exercised by the City in its sole discretion . This solicitation is available through the City's Procurement Portal. For technical support issues related to the City's Procurement Portal, Offeror may use the support bubble on the bottom right, or email procurement-support@opengov.com for any assistance. For other issues related to this solicitation please contact the procurement officer listed under Contact Information. Notwithstanding the foregoing, this Agreement will terminate upon the earliest occurrence: by reaching the end of the term including any extensions exercised, or termination pursuant to the provisions of this Agreement.",
-      "close_date": "2026-09-03T06:59:00.000Z",
-      "due_in_days": 18,
-      "daysToClose": 18,
-      "release_date": "2026-07-15T07:00:00.000Z",
-      "addendum_count": 1,
-      "url": "https://procurement.opengov.com/portal/phoenix/projects/275740",
       "status": "live"
     },
     {
@@ -334,8 +334,8 @@
       "agency": "City of Phoenix — Public Transit",
       "description": "The City of Phoenix invites sealed offers for Description . The Effective Date of this Agreement will be upon final signature and recording by the City Clerk's department. The Commencement Date of this Agreement will be on July 1, 2027. The term of this Agreement will be for 5 years, beginning on the Commencement Date, with one two-year option, which may be exercised by the City in its sole discretion. This solicitation is available through the City's Procurement Portal. For technical support issues related to the City's Procurement Portal, Offeror may use the support bubble on the bottom right, or email procurement-support@opengov.com for any assistance. For other issues related to this solicitation please contact the procurement officer listed under Contact Information. Notwithstanding the foregoing, this Agreement will terminate upon the earliest occurrence: by reaching the end of the term including any extensions exercised, or termination pursuant to the provisions of this Agreement.",
       "close_date": "2026-09-30T06:59:00.000Z",
-      "due_in_days": 45,
-      "daysToClose": 45,
+      "due_in_days": 44,
+      "daysToClose": 44,
       "release_date": "2026-07-31T07:00:00.000Z",
       "addendum_count": 0,
       "url": "https://procurement.opengov.com/portal/phoenix/projects/281222",
